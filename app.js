@@ -128,52 +128,13 @@ async function autenticarAnonimamente() {
 }
 
 // ============================================================
-// CARRUSEL DE GALERÍA DE NOVIOS (sesión .galeria-novios)
+// GALERÍA DE NOVIOS — Animación manejada por CSS puro
+// El desplazamiento infinito usa @keyframes scrollGaleria en styles.css.
+// No se necesita JavaScript para la animación del banner.
 // ============================================================
 function initCarousel() {
-  const slides  = document.querySelectorAll(".galeria-slide");
-  const dots    = document.querySelectorAll("#galeria-dots .carousel-dot");
-  const prevBtn = document.getElementById("galeria-prev");
-  const nextBtn = document.getElementById("galeria-next");
-  let current   = 0;
-  let autoTimer;
-
-  function goTo(idx) {
-    slides[current].classList.remove("active");
-    dots[current].classList.remove("active");
-    current = (idx + slides.length) % slides.length;
-    slides[current].classList.add("active");
-    dots[current].classList.add("active");
-  }
-
-  function startAuto() {
-    autoTimer = setInterval(() => goTo(current + 1), 5000);
-  }
-
-  function resetAuto() {
-    clearInterval(autoTimer);
-    startAuto();
-  }
-
-  if (prevBtn) prevBtn.addEventListener("click", () => { goTo(current - 1); resetAuto(); });
-  if (nextBtn) nextBtn.addEventListener("click", () => { goTo(current + 1); resetAuto(); });
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => { goTo(i); resetAuto(); });
-  });
-
-  // Swipe táctil
-  const carruselEl = document.getElementById("galeria-carrusel");
-  if (carruselEl) {
-    let touchStartX = 0;
-    carruselEl.addEventListener("touchstart", e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-    carruselEl.addEventListener("touchend", e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) { goTo(current + (diff > 0 ? 1 : -1)); resetAuto(); }
-    }, { passive: true });
-  }
-
-  if (slides.length > 0) startAuto();
+  // CSS puro maneja el loop infinito — no se requiere lógica JS aquí.
+  // Si en el futuro quieres controles manuales (botones), agrégalos aquí.
 }
 
 // ============================================================

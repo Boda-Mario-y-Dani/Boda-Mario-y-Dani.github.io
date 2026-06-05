@@ -96,75 +96,42 @@
 
 
   <!-- ============================================================
-       GALERÍA DE FOTOS — Carrusel horizontal con ratio real
-       Las fotos se muestran en su proporción vertical natural.
-       Para cambiar fotos: edita los atributos src y alt.
+       GALERÍA DE FOTOS — Banner con 3 fotos siempre visibles
+       Las fotos se deslizan automáticamente (loop infinito).
+       Para cambiar fotos: edita los atributos src de los items.
+       La pista se duplica para lograr el loop sin saltos.
        ============================================================ -->
   <section class="galeria-novios" id="galeria" aria-label="Galería de fotos de Dani y Mario">
     <div class="galeria-header">
       <p class="subtitulo-dorado">Nuestra historia</p>
     </div>
 
-    <!-- Carrusel grande (visible en desktop) -->
-    <div class="galeria-carrusel-wrap" aria-label="Carrusel de fotos grandes">
-      <div class="galeria-carrusel" id="galeria-carrusel" role="region" aria-roledescription="carrusel">
+    <!-- Wrapper con máscara de bordes y overflow oculto -->
+    <div class="galeria-track-wrapper" aria-hidden="true">
+      <div class="galeria-track" id="galeria-track">
 
-        <!-- Foto destacada 1 —  La propuesta -->
-        <div class="galeria-slide active" role="group" aria-label="Foto 1 de 4">
-          <img src="assets/Arrodillado.jpeg"
-               alt="Mario arrodillado proponiéndole matrimonio a Dani junto al lago"
-               loading="eager" />
-        </div>
+        <!-- ── SET 1 de 8 fotos ── -->
+        <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"        alt="La propuesta" loading="eager" /></div>
+        <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"        alt="Beso tierno" loading="eager" /></div>
+        <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"     alt="Mirada y sonrisa" loading="eager" /></div>
+        <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"          alt="Beso en la mano" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"    alt="Flores y anillo" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"      alt="Mirada con anillo" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/beso.jpeg"               alt="Beso romántico" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
 
-        <!-- Foto destacada 2 — Beso en la frente -->
-        <div class="galeria-slide" role="group" aria-label="Foto 2 de 4">
-          <img src="assets/Beso_frente.jpeg"
-               alt="Beso tierno de Dani y Mario frente al lago"
-               loading="lazy" />
-        </div>
+        <!-- ── SET 2 duplicado — necesario para loop sin salto ── -->
+        <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"        alt="La propuesta" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"        alt="Beso tierno" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"     alt="Mirada y sonrisa" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"          alt="Beso en la mano" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"    alt="Flores y anillo" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"      alt="Mirada con anillo" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/beso.jpeg"               alt="Beso romántico" loading="lazy" /></div>
+        <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
 
-        <!-- Foto destacada 3 — Mirada y sonrisa -->
-        <div class="galeria-slide" role="group" aria-label="Foto 3 de 4">
-          <img src="assets/Mirada_sonrisa.jpeg"
-               alt="Dani y Mario mirándose con una sonrisa junto al lago"
-               loading="lazy" />
-        </div>
-
-        <!-- Foto destacada 4 — Beso romántico -->
-        <div class="galeria-slide" role="group" aria-label="Foto 4 de 4">
-          <img src="assets/beso.jpeg"
-               alt="Dani y Mario besándose junto al agua"
-               loading="lazy" />
-        </div>
-
-        <!-- Botones carrusel grande -->
-        <button id="galeria-prev" class="carousel-btn carousel-btn--prev" aria-label="Foto anterior">‹</button>
-        <button id="galeria-next" class="carousel-btn carousel-btn--next" aria-label="Foto siguiente">›</button>
-      </div>
-
-      <!-- Indicadores del carrusel grande -->
-      <div class="carousel-dots" id="galeria-dots" role="tablist" aria-label="Seleccionar foto">
-        <button class="carousel-dot active" role="tab" aria-label="Foto 1" aria-selected="true"></button>
-        <button class="carousel-dot" role="tab" aria-label="Foto 2" aria-selected="false"></button>
-        <button class="carousel-dot" role="tab" aria-label="Foto 3" aria-selected="false"></button>
-        <button class="carousel-dot" role="tab" aria-label="Foto 4" aria-selected="false"></button>
-      </div>
-    </div>
-
-    <!-- Tira horizontal de miniaturas (todas las fotos, scroll natural) -->
-    <div class="galeria-tira-wrap">
-      <div class="galeria-tira" aria-label="Todas las fotos">
-        <div class="galeria-thumb"><img src="assets/Arrodillado.jpeg"        alt="La propuesta" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/Beso_frente.jpeg"        alt="Beso en la frente" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/Mirada_sonrisa.jpeg"     alt="Mirada y sonrisa" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/Beso_mano.jpeg"          alt="Beso en la mano" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/Flores_y_anillo.jpeg"    alt="Flores y anillo" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/Mirada_anillo.jpeg"      alt="Mirada con anillo" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/beso.jpeg"               alt="Beso junto al agua" loading="lazy" /></div>
-        <div class="galeria-thumb"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
-      </div>
-      <p class="galeria-tira-hint" aria-hidden="true">← Desliza para ver más →</p>
-    </div>
+      </div><!-- /galeria-track -->
+    </div><!-- /galeria-track-wrapper -->
   </section><!-- /galeria-novios -->
 
 

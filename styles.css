@@ -1,0 +1,1097 @@
+/* ============================================================
+   styles.css — Diseño romántico y elegante para boda
+   Dani & Mario · Paleta: vino, cereza, rosa, dorado, blanco
+   ============================================================ */
+
+/* ============================================================
+   1. VARIABLES Y SISTEMA DE DISEÑO
+   ============================================================ */
+:root {
+  /* Paleta principal */
+  --color-vino:        #6B1A2A;
+  --color-vino-oscuro: #4A0E1A;
+  --color-cereza:      #8B2252;
+  --color-rojo:        #9B2335;
+  --color-rosa:        #E8718A;
+  --color-rosa-claro:  #F4C2C2;
+  --color-coral:       #D4776B;
+  --color-rosa-palo:   #FDF0F0;
+  --color-rosa-fondo:  #FEF6F6;
+  --color-dorado:      #C9972A;
+  --color-dorado-claro:#E8C35A;
+  --color-dorado-suave:#F5E6C0;
+  --color-blanco:      #FFFFFF;
+  --color-texto:       #3D1520;
+  --color-texto-suave: #7A4050;
+  --color-sombra:      rgba(107, 26, 42, 0.12);
+  --color-sombra-fuerte: rgba(107, 26, 42, 0.22);
+
+  /* Tipografías */
+  --font-title:   'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-script:  'Great Vibes', cursive;
+  --font-body:    'Montserrat', 'Lato', sans-serif;
+
+  /* Espaciados */
+  --espacio-xs: 0.5rem;
+  --espacio-sm: 1rem;
+  --espacio-md: 1.75rem;
+  --espacio-lg: 3rem;
+  --espacio-xl: 5rem;
+
+  /* Bordes */
+  --radio-sm:  0.75rem;
+  --radio-md:  1.25rem;
+  --radio-lg:  2rem;
+  --radio-pill: 100px;
+
+  /* Sombras */
+  --sombra-card: 0 4px 24px var(--color-sombra), 0 1px 4px var(--color-sombra);
+  --sombra-hover: 0 8px 36px var(--color-sombra-fuerte);
+  --sombra-btn:  0 4px 18px rgba(107, 26, 42, 0.35);
+
+  /* Transiciones */
+  --transicion: 0.35s ease;
+}
+
+/* ============================================================
+   2. RESET Y BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-rosa-fondo);
+  color: var(--color-texto);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================================
+   3. TIPOGRAFÍA
+   ============================================================ */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-vino);
+}
+
+h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); }
+h2 { font-size: clamp(1.7rem, 5vw, 3rem); }
+h3 { font-size: clamp(1.2rem, 3.5vw, 1.75rem); }
+
+p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
+
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 10vw, 5.5rem);
+  color: var(--color-vino);
+  line-height: 1.1;
+}
+
+.subtitulo-dorado {
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-dorado);
+}
+
+/* ============================================================
+   4. UTILIDADES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  padding-inline: var(--espacio-md);
+}
+
+.container--sm { max-width: 720px; }
+.container--xs { max-width: 560px; }
+
+.text-center { text-align: center; }
+
+/* Divisor dorado decorativo */
+.divisor {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-sm);
+  margin-block: var(--espacio-md);
+  justify-content: center;
+}
+
+.divisor::before,
+.divisor::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-dorado));
+}
+
+.divisor::after {
+  background: linear-gradient(to left, transparent, var(--color-dorado));
+}
+
+.divisor-corazon {
+  color: var(--color-dorado);
+  font-size: 1rem;
+}
+
+/* ============================================================
+   5. ANIMACIONES
+   ============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatSuave {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 151, 42, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(201, 151, 42, 0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes petalosCaen {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes expandirProgreso {
+  from { width: 0%; }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Clases de animación por scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   6. PÉTALOS DECORATIVOS (decoración de fondo)
+   ============================================================ */
+.petalo {
+  position: fixed;
+  top: -30px;
+  font-size: 1.2rem;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  animation: petalosCaen linear infinite;
+}
+
+.petalo:nth-child(1)  { left: 10%; animation-duration: 8s;  animation-delay: 0s; }
+.petalo:nth-child(2)  { left: 20%; animation-duration: 11s; animation-delay: 2s; }
+.petalo:nth-child(3)  { left: 35%; animation-duration: 9s;  animation-delay: 4s; }
+.petalo:nth-child(4)  { left: 50%; animation-duration: 13s; animation-delay: 1s; }
+.petalo:nth-child(5)  { left: 65%; animation-duration: 10s; animation-delay: 6s; }
+.petalo:nth-child(6)  { left: 80%; animation-duration: 12s; animation-delay: 3s; }
+.petalo:nth-child(7)  { left: 90%; animation-duration: 7s;  animation-delay: 5s; }
+
+/* ============================================================
+   7. HERO — PANTALLA PRINCIPAL
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg,
+    var(--color-rosa-fondo) 0%,
+    #FEE8E8 40%,
+    #F8D8D8 100%
+  );
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(232, 113, 138, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(201, 151, 42, 0.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Ornamento esquina superior */
+.hero-ornamento {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg,
+    var(--color-vino),
+    var(--color-dorado),
+    var(--color-cereza),
+    var(--color-dorado),
+    var(--color-vino)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: var(--espacio-lg) var(--espacio-md);
+  width: 100%;
+  animation: fadeIn 1.2s ease both;
+}
+
+.hero-fecha {
+  margin-bottom: var(--espacio-sm);
+}
+
+.hero-nombres {
+  margin-bottom: var(--espacio-xs);
+  filter: drop-shadow(0 2px 8px rgba(107, 26, 42, 0.15));
+}
+
+.hero-y {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: var(--color-dorado);
+  font-weight: 300;
+  font-style: italic;
+  margin-inline: 0.5rem;
+}
+
+.hero-bienvenida {
+  color: var(--color-texto-suave);
+  font-weight: 400;
+  max-width: 480px;
+  margin-inline: auto;
+  margin-top: var(--espacio-sm);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+/* ============================================================
+   8. CARRUSEL DE FOTOS
+   ============================================================ */
+.carousel-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: var(--espacio-md);
+  margin-block: var(--espacio-lg);
+  position: relative;
+  z-index: 2;
+}
+
+.carousel-container {
+  position: relative;
+  border-radius: var(--radio-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-hover);
+  aspect-ratio: 16 / 9;
+  background: var(--color-vino-oscuro);
+}
+
+@media (max-width: 600px) {
+  .carousel-container { aspect-ratio: 4 / 5; }
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Degradado inferior sobre la foto */
+.carousel-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 50%,
+    rgba(107, 26, 42, 0.35) 100%
+  );
+  z-index: 2;
+}
+
+/* Botones de navegación */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--color-dorado);
+  color: var(--color-vino);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transicion);
+  box-shadow: var(--sombra-card);
+}
+
+.carousel-btn:hover {
+  background: var(--color-dorado);
+  color: var(--color-blanco);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn--prev { left: var(--espacio-sm); }
+.carousel-btn--next { right: var(--espacio-sm); }
+
+/* Indicadores (dots) */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--espacio-sm);
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-rosa-claro);
+  border: none;
+  cursor: pointer;
+  transition: var(--transicion);
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: var(--color-vino);
+  transform: scale(1.3);
+}
+
+/* Botón CTA hero */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, var(--color-vino), var(--color-cereza));
+  color: var(--color-blanco);
+  border: none;
+  border-radius: var(--radio-pill);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transicion);
+  box-shadow: var(--sombra-btn);
+  margin-top: var(--espacio-md);
+  animation: pulseGold 3s infinite 2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+.btn-hero:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 30px rgba(107, 26, 42, 0.5);
+}
+
+.btn-hero:active { transform: translateY(0) scale(0.98); }
+
+/* Línea dorada decorativa hero */
+.hero-linea {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-sm);
+  margin-block: var(--espacio-sm);
+  opacity: 0.6;
+}
+
+.hero-linea::before,
+.hero-linea::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--color-dorado);
+}
+
+/* ============================================================
+   9. SECCIÓN BIENVENIDA
+   ============================================================ */
+.seccion-bienvenida {
+  background: var(--color-blanco);
+  padding-block: var(--espacio-xl);
+}
+
+.bienvenida-card {
+  background: linear-gradient(135deg, var(--color-rosa-fondo), var(--color-blanco));
+  border: 1px solid var(--color-dorado-suave);
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-lg);
+  box-shadow: var(--sombra-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.bienvenida-card::before {
+  content: '♥';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 8rem;
+  color: var(--color-rosa-claro);
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.bienvenida-icono {
+  font-size: 2.5rem;
+  display: block;
+  text-align: center;
+  margin-bottom: var(--espacio-sm);
+  animation: floatSuave 4s ease-in-out infinite;
+}
+
+.bienvenida-texto {
+  color: var(--color-texto-suave);
+  font-style: italic;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+/* ============================================================
+   10. SECCIÓN INSTRUCCIONES
+   ============================================================ */
+.seccion-instrucciones {
+  background: linear-gradient(180deg, var(--color-rosa-fondo), var(--color-blanco));
+  padding-block: var(--espacio-xl);
+}
+
+.instrucciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--espacio-md);
+  margin-top: var(--espacio-lg);
+}
+
+.paso-card {
+  background: var(--color-blanco);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md) var(--espacio-md) var(--espacio-lg);
+  box-shadow: var(--sombra-card);
+  text-align: center;
+  position: relative;
+  transition: var(--transicion);
+  border: 1px solid rgba(201, 151, 42, 0.15);
+}
+
+.paso-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-hover);
+}
+
+.paso-numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-vino), var(--color-cereza));
+  color: var(--color-blanco);
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--espacio-sm);
+  box-shadow: 0 4px 12px rgba(107, 26, 42, 0.3);
+}
+
+.paso-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.paso-titulo {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: var(--color-vino);
+  margin-bottom: 0.5rem;
+}
+
+.paso-desc {
+  font-size: 0.92rem;
+  color: var(--color-texto-suave);
+}
+
+/* ============================================================
+   11. SECCIÓN RETOS FOTOGRÁFICOS
+   ============================================================ */
+.seccion-retos {
+  background: var(--color-blanco);
+  padding-block: var(--espacio-xl);
+}
+
+.retos-header {
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+.retos-subtexto {
+  color: var(--color-texto-suave);
+  margin-top: var(--espacio-sm);
+  max-width: 500px;
+  margin-inline: auto;
+}
+
+#retos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--espacio-sm);
+}
+
+.reto-card {
+  background: linear-gradient(135deg, var(--color-rosa-fondo), var(--color-blanco));
+  border: 1px solid var(--color-rosa-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md) var(--espacio-sm);
+  text-align: center;
+  cursor: default;
+  transition: var(--transicion);
+  box-shadow: var(--sombra-card);
+}
+
+.reto-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--color-dorado);
+  box-shadow: var(--sombra-hover);
+}
+
+.reto-emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.reto-card p {
+  font-size: 0.87rem;
+  color: var(--color-vino);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   12. SECCIÓN FORMULARIO
+   ============================================================ */
+.seccion-subida {
+  background: linear-gradient(180deg, var(--color-blanco), var(--color-rosa-fondo));
+  padding-block: var(--espacio-xl);
+}
+
+.form-wrapper {
+  background: var(--color-blanco);
+  border-radius: var(--radio-lg);
+  padding: var(--espacio-lg);
+  box-shadow: var(--sombra-hover);
+  border: 1px solid rgba(201, 151, 42, 0.2);
+  animation: appear 0.5s ease;
+}
+
+/* Título del form */
+.form-titulo {
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+/* Grupos de campo */
+.campo-grupo {
+  margin-bottom: var(--espacio-md);
+}
+
+.campo-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-vino);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.campo-label .opcional {
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Inputs y textarea */
+.campo-input,
+.campo-select,
+.campo-textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--color-rosa-claro);
+  border-radius: var(--radio-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-texto);
+  background: var(--color-blanco);
+  transition: var(--transicion);
+  outline: none;
+  appearance: none;
+}
+
+.campo-input:focus,
+.campo-select:focus,
+.campo-textarea:focus {
+  border-color: var(--color-cereza);
+  box-shadow: 0 0 0 4px rgba(139, 34, 82, 0.1);
+}
+
+.campo-input::placeholder,
+.campo-textarea::placeholder { color: #BBAAAA; }
+
+.campo-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Select con flecha personalizada */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: '▾';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-vino);
+  pointer-events: none;
+  font-size: 1rem;
+}
+
+/* Zona de subida de archivo */
+.file-upload-zone {
+  border: 2px dashed var(--color-rosa-claro);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-lg) var(--espacio-md);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transicion);
+  position: relative;
+  background: var(--color-rosa-fondo);
+}
+
+.file-upload-zone:hover,
+.file-upload-zone.drag-over {
+  border-color: var(--color-cereza);
+  background: #FDF0F5;
+}
+
+.file-upload-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.file-upload-icono {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.file-upload-texto {
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+}
+
+.file-upload-hint {
+  font-size: 0.8rem;
+  color: var(--color-rosa);
+  margin-top: 0.35rem;
+}
+
+/* Vista previa */
+#preview-wrapper {
+  display: none;
+  margin-top: var(--espacio-md);
+  text-align: center;
+  animation: appear 0.4s ease;
+}
+
+#foto-preview {
+  max-width: 280px;
+  max-height: 280px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radio-md);
+  border: 3px solid var(--color-dorado-suave);
+  box-shadow: var(--sombra-card);
+}
+
+.preview-label {
+  font-size: 0.8rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.5rem;
+}
+
+/* Barra de progreso */
+#progress-wrapper {
+  display: none;
+  margin-top: var(--espacio-md);
+}
+
+.progress-track {
+  height: 8px;
+  background: var(--color-rosa-claro);
+  border-radius: var(--radio-pill);
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-vino), var(--color-dorado), var(--color-cereza));
+  border-radius: var(--radio-pill);
+  transition: width 0.3s ease;
+}
+
+#progress-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--color-texto-suave);
+  margin-top: 0.5rem;
+}
+
+/* Botón enviar */
+.btn-enviar {
+  width: 100%;
+  padding: 1.1rem;
+  background: linear-gradient(135deg, var(--color-vino), var(--color-cereza));
+  color: var(--color-blanco);
+  border: none;
+  border-radius: var(--radio-md);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transicion);
+  box-shadow: var(--sombra-btn);
+  margin-top: var(--espacio-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-enviar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.15),
+    transparent
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+.btn-enviar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(107, 26, 42, 0.45);
+}
+
+.btn-enviar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mensajes de éxito y error */
+#mensaje-exito {
+  display: none;
+  background: linear-gradient(135deg, #FFF5F7, var(--color-blanco));
+  border: 1.5px solid var(--color-rosa-claro);
+  border-left: 5px solid var(--color-cereza);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md);
+  margin-top: var(--espacio-md);
+  text-align: center;
+  animation: appear 0.5s ease;
+}
+
+.exito-emoji { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+
+.exito-titulo {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  color: var(--color-cereza);
+}
+
+.exito-texto {
+  color: var(--color-texto-suave);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
+#mensaje-error {
+  display: none;
+  background: #FFF2F2;
+  border: 1.5px solid #FFBBBB;
+  border-left: 5px solid #CC3333;
+  border-radius: var(--radio-md);
+  padding: var(--espacio-sm) var(--espacio-md);
+  margin-top: var(--espacio-md);
+  color: #AA2222;
+  font-size: 0.92rem;
+  animation: appear 0.4s ease;
+}
+
+/* ============================================================
+   13. SECCIÓN FINAL / AGRADECIMIENTO
+   ============================================================ */
+.seccion-final {
+  background: linear-gradient(160deg,
+    var(--color-vino-oscuro) 0%,
+    var(--color-vino) 50%,
+    var(--color-cereza) 100%
+  );
+  padding-block: var(--espacio-xl);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.seccion-final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(201, 151, 42, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(232, 113, 138, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.final-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+.final-script {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: var(--color-dorado-claro);
+  display: block;
+  margin-bottom: var(--espacio-sm);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.final-titulo {
+  color: var(--color-blanco);
+  font-family: var(--font-title);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.final-subtexto {
+  color: rgba(255,255,255,0.8);
+  max-width: 480px;
+  margin-inline: auto;
+  margin-top: var(--espacio-sm);
+}
+
+/* Corazones decorativos */
+.corazones-deco {
+  display: flex;
+  justify-content: center;
+  gap: var(--espacio-sm);
+  margin-block: var(--espacio-md);
+  font-size: 1.3rem;
+  opacity: 0.75;
+}
+
+.corazones-deco span:nth-child(2) {
+  font-size: 1.8rem;
+  opacity: 1;
+  animation: floatSuave 3s ease-in-out infinite;
+}
+
+/* Línea ornamental final */
+.linea-ornamental {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--espacio-sm);
+  margin-block: var(--espacio-md);
+}
+
+.linea-ornamental::before,
+.linea-ornamental::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201, 151, 42, 0.6));
+}
+
+.linea-ornamental::after {
+  background: linear-gradient(to left, transparent, rgba(201, 151, 42, 0.6));
+}
+
+.linea-ornamental-centro {
+  color: var(--color-dorado-claro);
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   14. ENCABEZADOS DE SECCIÓN
+   ============================================================ */
+.seccion-header {
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+.seccion-header h2 { margin-top: 0.5rem; }
+
+/* ============================================================
+   15. RESPONSIVIDAD
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --espacio-lg: 2rem;
+    --espacio-xl: 3.5rem;
+  }
+
+  .instrucciones-grid {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin-inline: auto;
+  }
+
+  #retos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .form-wrapper {
+    padding: var(--espacio-md);
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 400px) {
+  #retos-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-hero {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* ============================================================
+   16. ACCESIBILIDAD Y UTILIDADES ADICIONALES
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .petalo { display: none; }
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-dorado);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scrollbar personalizado (WebKit) */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-rosa-fondo); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-rosa-claro);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-cereza); }

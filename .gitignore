@@ -1,0 +1,25 @@
+# ============================================================
+# .gitignore — Boda Mario y Dani
+# ============================================================
+
+# IMPORTANTE: Nunca subir la configuración real de Firebase
+firebase-config.js
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (si en algún momento se usa un servidor local)
+node_modules/
+.env
+.env.local
+
+# Logs
+*.log

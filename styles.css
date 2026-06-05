@@ -309,60 +309,191 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 }
 
 /* ============================================================
-   8. CARRUSEL DE FOTOS
+   8. GALERÍA DE NOVIOS
+   Carrusel grande + tira de miniaturas horizontal
    ============================================================ */
-.carousel-wrapper {
-  width: 100%;
-  max-width: 900px;
-  margin-inline: auto;
-  padding-inline: var(--espacio-md);
-  margin-block: var(--espacio-lg);
-  position: relative;
-  z-index: 2;
+.galeria-novios {
+  background: var(--color-blanco);
+  padding-block: var(--espacio-xl);
+  overflow: hidden;
 }
 
-.carousel-container {
+.galeria-header {
+  text-align: center;
+  margin-bottom: var(--espacio-md);
+}
+
+/* --- Carrusel grande --- */
+.galeria-carrusel-wrap {
+  position: relative;
+  max-width: 520px;           /* Ancho máximo centrado */
+  margin-inline: auto;
+  padding-inline: var(--espacio-md);
+}
+
+.galeria-carrusel {
   position: relative;
   border-radius: var(--radio-lg);
   overflow: hidden;
-  box-shadow: var(--sombra-hover);
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 4;         /* Ratio vertical — respeta las fotos portrait */
   background: var(--color-vino-oscuro);
+  box-shadow: var(--sombra-hover);
 }
 
-@media (max-width: 600px) {
-  .carousel-container { aspect-ratio: 4 / 5; }
-}
-
-.carousel-slide {
+.galeria-slide {
   position: absolute;
   inset: 0;
   opacity: 0;
   transition: opacity 0.9s ease;
 }
 
-.carousel-slide.active {
+.galeria-slide.active {
   opacity: 1;
   z-index: 1;
 }
 
-.carousel-slide img {
+.galeria-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
 }
 
-/* Degradado inferior sobre la foto */
-.carousel-slide::after {
+/* Degradado sutil en la parte inferior */
+.galeria-slide::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-    transparent 50%,
-    rgba(107, 26, 42, 0.35) 100%
+    transparent 60%,
+    rgba(107, 26, 42, 0.25) 100%
   );
   z-index: 2;
+  pointer-events: none;
+}
+
+/* --- Tira de miniaturas horizontal --- */
+.galeria-tira-wrap {
+  margin-top: var(--espacio-lg);
+  padding-inline: var(--espacio-md);
+}
+
+.galeria-tira {
+  display: flex;
+  gap: var(--espacio-sm);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: var(--espacio-xs);
+}
+
+.galeria-tira::-webkit-scrollbar { display: none; }
+
+.galeria-thumb {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 200px;
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: var(--sombra-card);
+  transition: var(--transicion);
+  border: 2px solid transparent;
+}
+
+.galeria-thumb:hover {
+  border-color: var(--color-dorado);
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-hover);
+}
+
+.galeria-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+}
+
+.galeria-thumb:hover img {
+  transform: scale(1.06);
+}
+
+.galeria-tira-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-texto-suave);
+  margin-top: var(--espacio-xs);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+/* En desktop, amplía el carrusel grande */
+@media (min-width: 768px) {
+  .galeria-carrusel-wrap { max-width: 640px; }
+  .galeria-thumb { width: 175px; height: 250px; }
+}
+
+/* ============================================================
+   8b. SECCIÓN FOTO DE FONDO (entre bienvenida e instrucciones)
+   ============================================================ */
+.foto-destacada {
+  /* EDITABLE: Cambia la imagen aquí */
+  background-image: url('assets/Beso_frente.jpeg');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;      /* Efecto parallax suave */
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.foto-destacada-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--espacio-lg) var(--espacio-md);
+}
+
+.foto-destacada::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg,
+    rgba(107, 26, 42, 0.68),
+    rgba(74, 14, 26, 0.75)
+  );
+  z-index: 0;
+}
+
+.foto-destacada-script {
+  font-family: var(--font-script);
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  color: var(--color-dorado-claro);
+  display: block;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+  line-height: 1.1;
+}
+
+.foto-destacada-frase {
+  color: rgba(255, 255, 255, 0.88);
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-style: italic;
+  font-weight: 300;
+  margin-top: var(--espacio-xs);
+  letter-spacing: 0.04em;
+}
+
+/* En móvil, desactivar parallax (mejor rendimiento) */
+@media (max-width: 768px) {
+  .foto-destacada {
+    background-attachment: scroll;
+    min-height: 280px;
+  }
 }
 
 /* Botones de navegación */
@@ -463,23 +594,8 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 
 .btn-hero:active { transform: translateY(0) scale(0.98); }
 
-/* Línea dorada decorativa hero */
-.hero-linea {
-  display: flex;
-  align-items: center;
-  gap: var(--espacio-sm);
-  margin-block: var(--espacio-sm);
-  opacity: 0.6;
-}
-
-.hero-linea::before,
-.hero-linea::after {
-  content: '';
-  flex: 1;
-  max-width: 60px;
-  height: 1px;
-  background: var(--color-dorado);
-}
+/* Línea dorada decorativa hero — ya no se usa, se usa .divisor */
+.hero-linea { display: none; }
 
 /* ============================================================
    9. SECCIÓN BIENVENIDA

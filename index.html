@@ -56,12 +56,12 @@
       <!-- Fecha — editable -->
       <p class="subtitulo-dorado hero-fecha"><!-- EDITABLE: Fecha de la boda -->2026</p>
 
-      <!-- Nombres — editables -->
-      <div class="hero-linea" aria-hidden="true">
-        <span></span>
-        <span style="color: var(--color-dorado); font-size: 0.8rem;">✦</span>
-        <span></span>
+      <!-- Divisor superior (corregido) -->
+      <div class="divisor" aria-hidden="true">
+        <span class="divisor-corazon">✦</span>
       </div>
+
+      <!-- Nombres — editables -->
       <h1 class="hero-nombres">
         <!-- EDITABLE: Nombre de la novia -->
         <span class="script">Dani</span>
@@ -69,10 +69,10 @@
         <!-- EDITABLE: Nombre del novio -->
         <span class="script">Mario</span>
       </h1>
-      <div class="hero-linea" aria-hidden="true">
-        <span></span>
-        <span style="color: var(--color-dorado); font-size: 0.8rem;">✦</span>
-        <span></span>
+
+      <!-- Divisor inferior -->
+      <div class="divisor" aria-hidden="true">
+        <span class="divisor-corazon">♥</span>
       </div>
 
       <!-- Frase principal — editable -->
@@ -92,94 +92,80 @@
       </button>
     </div>
 
-    <!-- ============================================================
-         CARRUSEL DE FOTOS DE LOS NOVIOS
-         Para cambiar las fotos: edita los atributos src abajo.
-         Agrega o elimina bloques <div class="carousel-slide">
-         Las fotos se leen desde la carpeta /assets/
-         ============================================================ -->
-    <div class="carousel-wrapper" aria-label="Fotos de Dani y Mario">
-      <div class="carousel-container" role="region" aria-roledescription="carrusel">
+  </section><!-- /hero -->
 
-        <!-- Slide 1 — Foto propuesta arrodillado -->
-        <div class="carousel-slide active" role="group" aria-label="Foto 1 de 6">
-          <img
-            src="assets/Arrodillado.jpeg"
-            alt="Mario arrodillado proponiéndole matrimonio a Dani junto al lago"
-            loading="eager"
-          />
+
+  <!-- ============================================================
+       GALERÍA DE FOTOS — Carrusel horizontal con ratio real
+       Las fotos se muestran en su proporción vertical natural.
+       Para cambiar fotos: edita los atributos src y alt.
+       ============================================================ -->
+  <section class="galeria-novios" id="galeria" aria-label="Galería de fotos de Dani y Mario">
+    <div class="galeria-header">
+      <p class="subtitulo-dorado">Nuestra historia</p>
+    </div>
+
+    <!-- Carrusel grande (visible en desktop) -->
+    <div class="galeria-carrusel-wrap" aria-label="Carrusel de fotos grandes">
+      <div class="galeria-carrusel" id="galeria-carrusel" role="region" aria-roledescription="carrusel">
+
+        <!-- Foto destacada 1 —  La propuesta -->
+        <div class="galeria-slide active" role="group" aria-label="Foto 1 de 4">
+          <img src="assets/Arrodillado.jpeg"
+               alt="Mario arrodillado proponiéndole matrimonio a Dani junto al lago"
+               loading="eager" />
         </div>
 
-        <!-- Slide 2 — Beso en la frente -->
-        <div class="carousel-slide" role="group" aria-label="Foto 2 de 6">
-          <img
-            src="assets/Beso_frente.jpeg"
-            alt="Mario y Dani compartiendo un beso tierno frente al lago"
-            loading="lazy"
-          />
+        <!-- Foto destacada 2 — Beso en la frente -->
+        <div class="galeria-slide" role="group" aria-label="Foto 2 de 4">
+          <img src="assets/Beso_frente.jpeg"
+               alt="Beso tierno de Dani y Mario frente al lago"
+               loading="lazy" />
         </div>
 
-        <!-- Slide 3 — Mirada y sonrisa -->
-        <div class="carousel-slide" role="group" aria-label="Foto 3 de 6">
-          <img
-            src="assets/Mirada_sonrisa.jpeg"
-            alt="Dani y Mario mirándose con una sonrisa junto al lago"
-            loading="lazy"
-          />
+        <!-- Foto destacada 3 — Mirada y sonrisa -->
+        <div class="galeria-slide" role="group" aria-label="Foto 3 de 4">
+          <img src="assets/Mirada_sonrisa.jpeg"
+               alt="Dani y Mario mirándose con una sonrisa junto al lago"
+               loading="lazy" />
         </div>
 
-        <!-- Slide 4 — Beso en la mano con el anillo -->
-        <div class="carousel-slide" role="group" aria-label="Foto 4 de 6">
-          <img
-            src="assets/Beso_mano.jpeg"
-            alt="Mario besando la mano de Dani mientras ella muestra el anillo de compromiso"
-            loading="lazy"
-          />
+        <!-- Foto destacada 4 — Beso romántico -->
+        <div class="galeria-slide" role="group" aria-label="Foto 4 de 4">
+          <img src="assets/beso.jpeg"
+               alt="Dani y Mario besándose junto al agua"
+               loading="lazy" />
         </div>
 
-        <!-- Slide 5 — Flores y anillo -->
-        <div class="carousel-slide" role="group" aria-label="Foto 5 de 6">
-          <img
-            src="assets/Flores_y_anillo.jpeg"
-            alt="Mano de Dani sobre el ramo de flores mostrando el anillo de compromiso"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Slide 6 — Beso romántico -->
-        <div class="carousel-slide" role="group" aria-label="Foto 6 de 6">
-          <img
-            src="assets/beso.jpeg"
-            alt="Dani y Mario besándose junto al agua"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Botones de navegación -->
-        <button
-          id="carousel-prev"
-          class="carousel-btn carousel-btn--prev"
-          aria-label="Foto anterior"
-        >‹</button>
-        <button
-          id="carousel-next"
-          class="carousel-btn carousel-btn--next"
-          aria-label="Foto siguiente"
-        >›</button>
+        <!-- Botones carrusel grande -->
+        <button id="galeria-prev" class="carousel-btn carousel-btn--prev" aria-label="Foto anterior">‹</button>
+        <button id="galeria-next" class="carousel-btn carousel-btn--next" aria-label="Foto siguiente">›</button>
       </div>
 
-      <!-- Indicadores -->
-      <div class="carousel-dots" role="tablist" aria-label="Seleccionar foto">
+      <!-- Indicadores del carrusel grande -->
+      <div class="carousel-dots" id="galeria-dots" role="tablist" aria-label="Seleccionar foto">
         <button class="carousel-dot active" role="tab" aria-label="Foto 1" aria-selected="true"></button>
         <button class="carousel-dot" role="tab" aria-label="Foto 2" aria-selected="false"></button>
         <button class="carousel-dot" role="tab" aria-label="Foto 3" aria-selected="false"></button>
         <button class="carousel-dot" role="tab" aria-label="Foto 4" aria-selected="false"></button>
-        <button class="carousel-dot" role="tab" aria-label="Foto 5" aria-selected="false"></button>
-        <button class="carousel-dot" role="tab" aria-label="Foto 6" aria-selected="false"></button>
       </div>
     </div>
 
-  </section><!-- /hero -->
+    <!-- Tira horizontal de miniaturas (todas las fotos, scroll natural) -->
+    <div class="galeria-tira-wrap">
+      <div class="galeria-tira" aria-label="Todas las fotos">
+        <div class="galeria-thumb"><img src="assets/Arrodillado.jpeg"        alt="La propuesta" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/Beso_frente.jpeg"        alt="Beso en la frente" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/Mirada_sonrisa.jpeg"     alt="Mirada y sonrisa" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/Beso_mano.jpeg"          alt="Beso en la mano" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/Flores_y_anillo.jpeg"    alt="Flores y anillo" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/Mirada_anillo.jpeg"      alt="Mirada con anillo" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/beso.jpeg"               alt="Beso junto al agua" loading="lazy" /></div>
+        <div class="galeria-thumb"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
+      </div>
+      <p class="galeria-tira-hint" aria-hidden="true">← Desliza para ver más →</p>
+    </div>
+  </section><!-- /galeria-novios -->
 
 
   <!-- ============================================================
@@ -214,6 +200,18 @@
 
 
   <!-- ============================================================
+       SECCIÓN FOTO FONDO — Foto de los novios como fondo
+       Cambia la imagen en styles.css: .foto-destacada { background-image: ... }
+       ============================================================ -->
+  <section class="foto-destacada" aria-hidden="true">
+    <div class="foto-destacada-overlay">
+      <span class="foto-destacada-script">para siempre</span>
+      <p class="foto-destacada-frase">Un día, un amor, toda una vida</p>
+    </div>
+  </section><!-- /foto-destacada -->
+
+
+  <!-- ============================================================
        3. SECCIÓN INSTRUCCIONES
        ============================================================ -->
   <section class="seccion-instrucciones" id="instrucciones" aria-labelledby="titulo-instrucciones">
@@ -227,49 +225,32 @@
         <!-- Paso 1 -->
         <div class="paso-card fade-in-up" style="transition-delay: 0.1s;">
           <div class="paso-numero" aria-hidden="true">1</div>
-          <span class="paso-emoji" aria-hidden="true">🎯</span>
-          <h3 class="paso-titulo">Elige tu reto</h3>
-          <p class="paso-desc">Selecciona el reto fotográfico que lograste durante la celebración.</p>
+          <span class="paso-emoji" aria-hidden="true">📱</span>
+          <h3 class="paso-titulo">Sube tu foto</h3>
+          <p class="paso-desc">Selecciona la foto que quieras compartir directamente desde tu celular.</p>
         </div>
 
         <!-- Paso 2 -->
         <div class="paso-card fade-in-up" style="transition-delay: 0.2s;">
           <div class="paso-numero" aria-hidden="true">2</div>
-          <span class="paso-emoji" aria-hidden="true">📱</span>
-          <h3 class="paso-titulo">Sube tu foto</h3>
-          <p class="paso-desc">Selecciona la foto desde tu celular y deja que la magia ocurra.</p>
+          <span class="paso-emoji" aria-hidden="true">💬</span>
+          <h3 class="paso-titulo">Escribe tu nombre</h3>
+          <p class="paso-desc">Agrega tu nombre y si quieres, un mensaje especial para los novios.</p>
         </div>
 
         <!-- Paso 3 -->
         <div class="paso-card fade-in-up" style="transition-delay: 0.3s;">
           <div class="paso-numero" aria-hidden="true">3</div>
-          <span class="paso-emoji" aria-hidden="true">💬</span>
-          <h3 class="paso-titulo">Escribe un mensaje</h3>
-          <p class="paso-desc">Comparte tu nombre o una dedicatoria especial para los novios.</p>
+          <span class="paso-emoji" aria-hidden="true">💕</span>
+          <h3 class="paso-titulo">¡Listo!</h3>
+          <p class="paso-desc">Tu foto se guarda de forma privada y los novios la recibirán con todo el cariño.</p>
         </div>
       </div>
     </div>
   </section><!-- /instrucciones -->
 
 
-  <!-- ============================================================
-       4. SECCIÓN RETOS FOTOGRÁFICOS
-       ============================================================ -->
-  <section class="seccion-retos" id="retos" aria-labelledby="titulo-retos">
-    <div class="container">
-      <div class="retos-header fade-in-up">
-        <p class="subtitulo-dorado">Diviértete</p>
-        <h2 id="titulo-retos">Retos fotográficos</h2>
-        <!-- EDITABLE: Subtexto de retos -->
-        <p class="retos-subtexto">
-          ¿Cuáles pudiste completar hoy? Cada foto es un recuerdo que guardaremos para siempre.
-        </p>
-      </div>
 
-      <!-- Las tarjetas se generan dinámicamente desde app.js -->
-      <div id="retos-grid" aria-label="Lista de retos fotográficos"></div>
-    </div>
-  </section><!-- /retos -->
 
 
   <!-- ============================================================
@@ -317,23 +298,7 @@
             />
           </div>
 
-          <!-- Campo: Reto fotográfico -->
-          <div class="campo-grupo">
-            <label class="campo-label" for="campo-reto">
-              Reto fotográfico <span aria-hidden="true">✦</span>
-            </label>
-            <div class="select-wrapper">
-              <select
-                id="campo-reto"
-                class="campo-select"
-                required
-                aria-required="true"
-              >
-                <option value="" disabled selected>— Selecciona un reto —</option>
-                <!-- Opciones generadas dinámicamente desde app.js -->
-              </select>
-            </div>
-          </div>
+
 
           <!-- Campo: Mensaje para los novios (opcional) -->
           <div class="campo-grupo">

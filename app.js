@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousel();
   initForm();
   initScrollAnimations();
-  populateRetos();
+  // populateRetos() eliminado — los retos se dan en papel
 
   if (FIREBASE_ENABLED) {
     initFirebase();
@@ -128,14 +128,14 @@ async function autenticarAnonimamente() {
 }
 
 // ============================================================
-// CARRUSEL DE FOTOS DE PORTADA
+// CARRUSEL DE GALERÍA DE NOVIOS (sesión .galeria-novios)
 // ============================================================
 function initCarousel() {
-  const slides    = document.querySelectorAll(".carousel-slide");
-  const dots      = document.querySelectorAll(".carousel-dot");
-  const prevBtn   = document.getElementById("carousel-prev");
-  const nextBtn   = document.getElementById("carousel-next");
-  let current     = 0;
+  const slides  = document.querySelectorAll(".galeria-slide");
+  const dots    = document.querySelectorAll("#galeria-dots .carousel-dot");
+  const prevBtn = document.getElementById("galeria-prev");
+  const nextBtn = document.getElementById("galeria-next");
+  let current   = 0;
   let autoTimer;
 
   function goTo(idx) {
@@ -147,7 +147,7 @@ function initCarousel() {
   }
 
   function startAuto() {
-    autoTimer = setInterval(() => goTo(current + 1), 4500);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
   }
 
   function resetAuto() {
@@ -162,45 +162,27 @@ function initCarousel() {
     dot.addEventListener("click", () => { goTo(i); resetAuto(); });
   });
 
-  // Swipe táctil en el carrusel
-  const carouselEl = document.querySelector(".carousel-container");
-  if (carouselEl) {
+  // Swipe táctil
+  const carruselEl = document.getElementById("galeria-carrusel");
+  if (carruselEl) {
     let touchStartX = 0;
-    carouselEl.addEventListener("touchstart", e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
-    carouselEl.addEventListener("touchend", e => {
+    carruselEl.addEventListener("touchstart", e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    carruselEl.addEventListener("touchend", e => {
       const diff = touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) { goTo(current + (diff > 0 ? 1 : -1)); resetAuto(); }
     }, { passive: true });
   }
 
-  startAuto();
+  if (slides.length > 0) startAuto();
 }
 
 // ============================================================
-// RELLENAR TARJETAS Y SELECT DE RETOS
+// RETOS — Se eliminaron del sitio (se dan en papel).
+// Esta función se mantiene como stub por si se necesita reactivar.
 // ============================================================
 function populateRetos() {
-  // Tarjetas visuales
-  const grid = document.getElementById("retos-grid");
-  if (grid) {
-    CONFIG.retos.forEach(reto => {
-      const card = document.createElement("div");
-      card.className = "reto-card";
-      card.innerHTML = `<span class="reto-emoji">${reto.emoji}</span><p>${reto.texto}</p>`;
-      grid.appendChild(card);
-    });
-  }
-
-  // Select del formulario
-  const select = document.getElementById("campo-reto");
-  if (select) {
-    CONFIG.retos.forEach((reto, i) => {
-      const opt = document.createElement("option");
-      opt.value = reto.texto;
-      opt.textContent = `${reto.emoji} ${reto.texto}`;
-      select.appendChild(opt);
-    });
-  }
+  // No hace nada — la sección de retos fue removida del HTML.
+  // Si quieres reactivarla, descomenta el código en el bloque de abajo.
 }
 
 // ============================================================
@@ -246,13 +228,11 @@ function initForm() {
 
     const nombre  = document.getElementById("campo-nombre").value.trim();
     const mesa    = document.getElementById("campo-mesa").value.trim();
-    const reto    = document.getElementById("campo-reto").value;
     const mensaje = document.getElementById("campo-mensaje").value.trim();
 
     if (!nombre) { mostrarError("Por favor escribe tu nombre."); return; }
-    if (!reto)   { mostrarError("Por favor selecciona un reto fotográfico."); return; }
 
-    const datosFormulario = { nombre, mesa, reto, mensaje };
+    const datosFormulario = { nombre, mesa, mensaje };
 
     uploadBtn.disabled = true;
     uploadBtn.textContent = "Enviando...";
@@ -331,8 +311,7 @@ async function subirConFirebase(datos) {
   await addDoc(colRef, {
     userId:         user.uid,
     nombreInvitado: datos.nombre,
-    mesa:           datos.mesa   || null,
-    reto:           datos.reto,
+    mesa:           datos.mesa    || null,
     mensaje:        datos.mensaje || null,
     storagePath:    rutaArchivo,
     fileName:       selectedFile.name,

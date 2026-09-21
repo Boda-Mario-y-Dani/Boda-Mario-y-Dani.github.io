@@ -1465,58 +1465,44 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 }
 
 /* ══════════════════════════════════════════════════
-   SPLIT TEXT EFFECT — el 12 del medio partido en dos
-   mitades horizontales superpuestas con clip-path.
+   SPLIT TEXT EFFECT — el 12 del medio con Daniela & Mario
    Copia fiel de la invitación física:
-   - El número 12 mantiene su altura y tamaño idéntico
-   - No se desplaza: las mitades superior e inferior
-     comparten la misma posición exacta
-   - Un corte horizontal limpio deja el hueco donde
-     se sitúa "Daniela & Mario"
+   - Un único número 12 idéntico al 12 superior y al 26
+   - Una franja central con fondo #FDFAF5 cubre el centro
+     del 12 para alojar "Daniela & Mario"
+   - La parte superior e inferior del 12 quedan siempre
+     visibles y conectadas con alineación 100% continua
    ══════════════════════════════════════════════════ */
 .inv-split-wrap {
   position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-}
-
-/* Todas las capas (top, bottom y middle) se superponen en la misma celda de grid */
-.inv-split-wrap > * {
-  grid-area: 1 / 1;
-}
-
-/* Las dos piezas ocupan exactamente el mismo espacio físico */
-.inv-split-piece {
-  width: 100%;
-  text-align: center;
-  pointer-events: none;
-  user-select: none;
-}
-
-/* Mitad superior: muestra del 0% al 37% de la altura natural del 12 */
-.inv-split-top {
-  clip-path: polygon(0 0, 100% 0, 100% 37%, 0 37%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 37%, 0 37%);
-}
-
-/* Mitad inferior: muestra del 63% al 100% de la altura natural del 12 */
-.inv-split-bottom {
-  clip-path: polygon(0 63%, 100% 63%, 100% 100%, 0 63%);
-  -webkit-clip-path: polygon(0 63%, 100% 63%, 100% 100%, 0 63%);
-}
-
-/* Capa central: nombres flotando exactamente en medio */
-.inv-split-middle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+.inv-split-wrap > .inv-num-grande {
+  position: relative;
+  z-index: 1;
+}
+
+/* Franja central que aloja a Daniela & Mario y enmascara el centro del 12 */
+.inv-split-middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FDFAF5;
+  padding-block: clamp(0.2rem, 0.8vw, 0.6rem);
+  padding-inline: clamp(1.2rem, 4vw, 3rem);
   pointer-events: none;
 }
 
-/* Sin líneas laterales — en la invitación física no hay líneas */
+/* Sin líneas laterales */
 .inv-split-middle::before,
 .inv-split-middle::after {
   display: none;
@@ -1530,7 +1516,6 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   white-space: nowrap;
   line-height: 1;
   letter-spacing: 0.02em;
-  padding-inline: 0.5rem;
 }
 
 

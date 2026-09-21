@@ -1444,6 +1444,11 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 }
 
 .inv-fecha-grande-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.2rem, 1.5vw, 1rem);
   text-align: center;
   position: relative;
 }
@@ -1451,23 +1456,29 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 .inv-num-grande {
   display: block;
   font-family: var(--font-title);
-  font-size: clamp(7rem, 30vw, 18rem);   /* Números más grandes que antes */
-  font-weight: 700;
+  font-size: clamp(6.5rem, 26vw, 15rem);
+  font-weight: 500;
   color: var(--color-vino);
-  line-height: 0.88;
-  letter-spacing: -0.02em;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  user-select: none;
 }
 
 /* ══════════════════════════════════════════════════
    SPLIT TEXT EFFECT — el 12 del medio partido en dos
-   mitades horizontales superpuestas con clip-path
+   mitades horizontales superpuestas con clip-path.
+   Copia fiel de la invitación física:
+   - El número 12 mantiene su altura y tamaño idéntico
+   - No se desplaza: las mitades superior e inferior
+     comparten la misma posición exacta
+   - Un corte horizontal limpio deja el hueco donde
+     se sitúa "Daniela & Mario"
    ══════════════════════════════════════════════════ */
 .inv-split-wrap {
   position: relative;
   display: grid;
   place-items: center;
   width: 100%;
-  margin-block: clamp(1rem, 3.5vw, 2.5rem);
 }
 
 /* Todas las capas (top, bottom y middle) se superponen en la misma celda de grid */
@@ -1483,18 +1494,16 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   user-select: none;
 }
 
-/* Mitad superior: recorte perfecto del 0% al 50% y desplazamiento hacia arriba */
+/* Mitad superior: muestra del 0% al 37% de la altura natural del 12 */
 .inv-split-top {
-  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-  transform: translateY(calc(-1 * clamp(0.9rem, 3vw, 2.2rem)));
+  clip-path: polygon(0 0, 100% 0, 100% 37%, 0 37%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 37%, 0 37%);
 }
 
-/* Mitad inferior: recorte perfecto del 50% al 100% y desplazamiento hacia abajo */
+/* Mitad inferior: muestra del 63% al 100% de la altura natural del 12 */
 .inv-split-bottom {
-  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
-  transform: translateY(clamp(0.9rem, 3vw, 2.2rem));
+  clip-path: polygon(0 63%, 100% 63%, 100% 100%, 0 63%);
+  -webkit-clip-path: polygon(0 63%, 100% 63%, 100% 100%, 0 63%);
 }
 
 /* Capa central: nombres flotando exactamente en medio */
@@ -1502,32 +1511,26 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.6rem, 2vw, 1.2rem);
   width: 100%;
-  max-width: 520px;
   z-index: 2;
-  padding-inline: 1rem;
+  pointer-events: none;
 }
 
-/* Líneas decorativas finas a los lados del texto */
+/* Sin líneas laterales — en la invitación física no hay líneas */
 .inv-split-middle::before,
 .inv-split-middle::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(107, 26, 42, 0.28);
-  max-width: 70px;
+  display: none;
 }
 
 /* Nombre en el centro del split */
 .inv-nombres-en-split {
   font-family: var(--font-script);
-  font-size: clamp(1.6rem, 5.5vw, 3.4rem);
+  font-size: clamp(2.2rem, 7.5vw, 4.8rem);
   color: var(--color-vino);
   white-space: nowrap;
-  line-height: 1.1;
-  padding-inline: 0.4rem;
-  background: #FDFAF5; /* Enmarca el texto de forma limpia */
+  line-height: 1;
+  letter-spacing: 0.02em;
+  padding-inline: 0.5rem;
 }
 
 

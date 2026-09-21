@@ -3,406 +3,319 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#6B1A2A" />
+  <meta name="theme-color" content="#7B1A1A" />
+  <title>Daniela &amp; Mario · 12.12.2026</title>
+  <meta name="description" content="Nos casamos el 12 de diciembre de 2026. Te invitamos a compartir este día tan especial con nosotros." />
+  <meta name="robots" content="noindex, nofollow" />
 
-  <!-- ============================================================
-       SEO & Open Graph
-       Cambia los textos con los datos reales de tu boda
-       ============================================================ -->
-  <title>Dani &amp; Mario · Comparte tus fotos</title>
-  <meta name="description"
-        content="Sube tus fotos de la boda de Dani y Mario. Completa los retos fotográficos y ayúdanos a guardar estos recuerdos especiales." />
-  <meta property="og:title"       content="Dani &amp; Mario · Boda 2026" />
-  <meta property="og:description" content="Sube tus fotos y ayúdanos a recordar este día especial." />
-  <meta property="og:type"        content="website" />
-  <meta name="robots" content="noindex, nofollow" /><!-- Privacidad: no indexar -->
-
-  <!-- ============================================================
-       Google Fonts — Cormorant Garamond + Great Vibes + Montserrat
-       ============================================================ -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body class="inv-body">
 
   <!-- ============================================================
-       PÉTALOS ANIMADOS (decoración de fondo)
+       INTRO / SOBRE — Pantalla de apertura
+       Se descarta al hacer click/tap o tras 4 segundos
        ============================================================ -->
-  <div aria-hidden="true">
-    <span class="petalo">🌸</span>
-    <span class="petalo">🌹</span>
-    <span class="petalo">🌺</span>
-    <span class="petalo">✨</span>
-    <span class="petalo">🌸</span>
-    <span class="petalo">💮</span>
-    <span class="petalo">🌹</span>
+  <div
+    id="sobre-intro"
+    class="sobre-overlay"
+    role="button"
+    tabindex="0"
+    aria-label="Toca para abrir la invitación"
+  >
+    <div class="sobre-escena">
+      <!-- Sobre rojo con sello dorado -->
+      <div class="sobre-caja" aria-hidden="true">
+        <span class="sobre-fecha-text">12.12.26</span>
+        <div class="sobre-sello">
+          <span class="sobre-monograma">MD</span>
+        </div>
+        <!-- Líneas decorativas del sobre -->
+        <div class="sobre-linea sobre-linea--tl"></div>
+        <div class="sobre-linea sobre-linea--tr"></div>
+        <div class="sobre-linea sobre-linea--bl"></div>
+        <div class="sobre-linea sobre-linea--br"></div>
+      </div>
+
+      <p class="sobre-hint" aria-live="polite">Toca para abrir ✦</p>
+    </div>
   </div>
 
+
   <!-- ============================================================
-       1. HERO — Pantalla de bienvenida principal
+       INVITACIÓN PRINCIPAL — Oculta al inicio
        ============================================================ -->
-  <section class="hero" id="inicio" aria-label="Bienvenida a la boda de Dani y Mario">
-    <div class="hero-ornamento" aria-hidden="true"></div>
+  <div id="inv-main" class="inv-main inv-oculta">
 
-    <div class="hero-content container container--sm">
-      <!-- Fecha — editable -->
-      <p class="subtitulo-dorado hero-fecha"><!-- EDITABLE: Fecha de la boda -->2026</p>
-
-      <!-- Divisor superior (corregido) -->
-      <div class="divisor" aria-hidden="true">
-        <span class="divisor-corazon">✦</span>
-      </div>
-
-      <!-- Nombres — editables -->
-      <h1 class="hero-nombres">
-        <!-- EDITABLE: Nombre de la novia -->
-        <span class="script">Dani</span>
-        <span class="hero-y">&amp;</span>
-        <!-- EDITABLE: Nombre del novio -->
-        <span class="script">Mario</span>
-      </h1>
-
-      <!-- Divisor inferior -->
-      <div class="divisor" aria-hidden="true">
-        <span class="divisor-corazon">♥</span>
-      </div>
-
-      <!-- Frase principal — editable -->
-      <p class="hero-bienvenida">
-        <!-- EDITABLE: Frase de bienvenida -->
-        Gracias por ser parte de este día tan especial
-      </p>
-
-      <!-- CTA principal -->
-      <button
-        id="btn-hero-subir"
-        class="btn-hero"
-        onclick="scrollAlFormulario()"
-        aria-label="Ir a la sección para subir fotos"
-      >
-        📸 Subir mis fotos
-      </button>
+    <!-- Pétalos decorativos flotantes -->
+    <div aria-hidden="true" class="petalos-wrap">
+      <span class="petalo">🌸</span>
+      <span class="petalo">🌹</span>
+      <span class="petalo">✨</span>
+      <span class="petalo">🌸</span>
+      <span class="petalo">🌹</span>
+      <span class="petalo">💮</span>
+      <span class="petalo">✨</span>
     </div>
 
-  </section><!-- /hero -->
+
+    <!-- ══════════════════════════════════════════════
+         1. PORTADA — Roja con monograma dorado MD
+         Inspirada en la tapa del cuadernillo físico
+         ══════════════════════════════════════════════ -->
+    <section class="inv-portada" aria-label="Portada">
+      <div class="inv-portada-inner">
+        <p class="inv-monograma-grande" aria-label="Monograma MD">MD</p>
+        <div class="inv-portada-linea" aria-hidden="true"></div>
+        <p class="inv-portada-fecha">12 · 12 · 2026</p>
+      </div>
+    </section>
 
 
-  <!-- ============================================================
-       GALERÍA DE FOTOS — Banner con 3 fotos siempre visibles
-       Las fotos se deslizan automáticamente (loop infinito).
-       Para cambiar fotos: edita los atributos src de los items.
-       La pista se duplica para lograr el loop sin saltos.
-       ============================================================ -->
-  <section class="galeria-novios" id="galeria" aria-label="Galería de fotos de Dani y Mario">
-    <div class="galeria-header">
-      <p class="subtitulo-dorado">Nuestra historia</p>
-    </div>
-
-    <!-- Wrapper con máscara de bordes y overflow oculto -->
-    <div class="galeria-track-wrapper" aria-hidden="true">
-      <div class="galeria-track" id="galeria-track">
-
-        <!-- ── SET 1 de 8 fotos ── -->
-        <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"        alt="La propuesta" loading="eager" /></div>
-        <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"        alt="Beso tierno" loading="eager" /></div>
-        <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"     alt="Mirada y sonrisa" loading="eager" /></div>
-        <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"          alt="Beso en la mano" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"    alt="Flores y anillo" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"      alt="Mirada con anillo" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/beso.jpeg"               alt="Beso romántico" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
-
-        <!-- ── SET 2 duplicado — necesario para loop sin salto ── -->
-        <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"        alt="La propuesta" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"        alt="Beso tierno" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"     alt="Mirada y sonrisa" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"          alt="Beso en la mano" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"    alt="Flores y anillo" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"      alt="Mirada con anillo" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/beso.jpeg"               alt="Beso romántico" loading="lazy" /></div>
-        <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
-
-      </div><!-- /galeria-track -->
-    </div><!-- /galeria-track-wrapper -->
-  </section><!-- /galeria-novios -->
+    <!-- ══════════════════════════════════════════════
+         2. FECHA GRANDE — 12 / 12 / 26
+         Inspirada en la contraportada del cuadernillo
+         ══════════════════════════════════════════════ -->
+    <section class="inv-fecha-seccion" aria-label="Fecha de la boda: 12 de diciembre de 2026">
+      <div class="inv-fecha-grande-wrap">
+        <span class="inv-num-grande fade-in-up">12</span>
+        <div class="inv-fecha-overlay-row fade-in-up" style="transition-delay:0.15s;">
+          <span class="inv-num-grande inv-num-opaco">12</span>
+          <!-- Nombre superpuesto sobre el 12 del medio -->
+          <p class="inv-nombres-fecha-overlay">Daniela &amp; Mario</p>
+        </div>
+        <span class="inv-num-grande fade-in-up" style="transition-delay:0.3s;">26</span>
+      </div>
+    </section>
 
 
-  <!-- ============================================================
-       2. SECCIÓN BIENVENIDA
-       ============================================================ -->
-  <section class="seccion-bienvenida" id="bienvenida" aria-labelledby="titulo-bienvenida">
-    <div class="container container--sm">
-      <div class="bienvenida-card fade-in-up">
-        <span class="bienvenida-icono" aria-hidden="true">💌</span>
+    <!-- ══════════════════════════════════════════════
+         3. TARJETA DE INVITACIÓN FORMAL
+         Contiene toda la información de la invitación
+         física. EDITABLE: cada texto tiene comentario.
+         ══════════════════════════════════════════════ -->
+    <section class="inv-tarjeta" id="invitacion" aria-labelledby="inv-titulo">
+      <div class="inv-tarjeta-inner">
 
-        <div class="divisor" aria-hidden="true">
-          <span class="divisor-corazon">✦</span>
+        <!-- EDITABLE: Cita o versículo de apertura -->
+        <blockquote class="inv-cita fade-in-up">
+          Dios juntó nuestras manos y nos señaló el camino, nosotros uniremos nuestras vidas y la recorreremos con amor y fe
+        </blockquote>
+
+        <div class="inv-div-gold fade-in-up"></div>
+
+        <!-- EDITABLE: Etiqueta y nombres -->
+        <p class="inv-label-sm">Nuestra Boda</p>
+        <h1 class="inv-nombres-titulo fade-in-up" id="inv-titulo">
+          Daniela &amp; Mario
+        </h1>
+
+        <div class="inv-linea-fina"></div>
+
+        <!-- EDITABLE: Padrinos -->
+        <div class="inv-bloque fade-in-up">
+          <p class="inv-label-sm">Padrinos</p>
+          <p class="inv-texto-formal">María de Fátima Jiménez Acosta</p>
+          <p class="inv-texto-formal">J. Carlos Meléndez López</p>
         </div>
 
-        <h2 id="titulo-bienvenida" style="text-align:center; margin-bottom: 1rem;">
-          Para nuestros seres queridos
-        </h2>
+        <div class="inv-linea-fina"></div>
 
-        <!-- EDITABLE: Mensaje de bienvenida -->
-        <p class="bienvenida-texto">
-          Queremos ver nuestra boda a través de tus ojos. Sube tus fotos,
-          momentos divertidos y recuerdos especiales para que podamos revivir
-          este día desde cada mirada.
+        <!-- EDITABLE: Nuestros Padres -->
+        <div class="inv-bloque fade-in-up">
+          <p class="inv-label-sm">Nuestros Padres</p>
+          <div class="inv-padres-grid">
+            <div class="inv-padres-col">
+              <p class="inv-texto-formal">Reyna Cecilia<br>Jiménez Acosta</p>
+              <p class="inv-texto-formal">José Juan<br>León Rodríguez</p>
+            </div>
+            <div class="inv-padres-col">
+              <p class="inv-texto-formal">Yohali<br>Yehyektzin</p>
+              <p class="inv-texto-formal">García<br>Hernández</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="inv-linea-fina"></div>
+
+        <!-- EDITABLE: Texto de invitación -->
+        <p class="inv-compartir fade-in-up">
+          Queremos compartir con usted y su familia nuestra unión el día
         </p>
 
-        <div class="divisor" aria-hidden="true">
-          <span class="divisor-corazon">♥</span>
-        </div>
-      </div>
-    </div>
-  </section><!-- /bienvenida -->
-
-
-  <!-- ============================================================
-       SECCIÓN FOTO FONDO — Foto de los novios como fondo
-       Cambia la imagen en styles.css: .foto-destacada { background-image: ... }
-       ============================================================ -->
-  <section class="foto-destacada" aria-hidden="true">
-    <div class="foto-destacada-overlay">
-      <span class="foto-destacada-script">para siempre</span>
-      <p class="foto-destacada-frase">Un día, un amor, toda una vida</p>
-    </div>
-  </section><!-- /foto-destacada -->
-
-
-  <!-- ============================================================
-       3. SECCIÓN INSTRUCCIONES
-       ============================================================ -->
-  <section class="seccion-instrucciones" id="instrucciones" aria-labelledby="titulo-instrucciones">
-    <div class="container">
-      <div class="seccion-header fade-in-up">
-        <p class="subtitulo-dorado">Muy fácil</p>
-        <h2 id="titulo-instrucciones">¿Cómo funciona?</h2>
-      </div>
-
-      <div class="instrucciones-grid">
-        <!-- Paso 1 -->
-        <div class="paso-card fade-in-up" style="transition-delay: 0.1s;">
-          <div class="paso-numero" aria-hidden="true">1</div>
-          <span class="paso-emoji" aria-hidden="true">📱</span>
-          <h3 class="paso-titulo">Sube tu foto</h3>
-          <p class="paso-desc">Selecciona la foto que quieras compartir directamente desde tu celular.</p>
+        <!-- EDITABLE: Fecha formal con líneas doradas -->
+        <div
+          class="inv-fecha-bloque fade-in-up"
+          aria-label="Sábado 12 de Diciembre de 2026"
+        >
+          <div class="inv-fecha-col">
+            <span class="inv-dia-nombre">Sábado</span>
+          </div>
+          <div class="inv-fecha-numero">12</div>
+          <div class="inv-fecha-col">
+            <span class="inv-mes">Diciembre</span>
+            <span class="inv-anio">2026</span>
+          </div>
         </div>
 
-        <!-- Paso 2 -->
-        <div class="paso-card fade-in-up" style="transition-delay: 0.2s;">
-          <div class="paso-numero" aria-hidden="true">2</div>
-          <span class="paso-emoji" aria-hidden="true">💬</span>
-          <h3 class="paso-titulo">Escribe tu nombre</h3>
-          <p class="paso-desc">Agrega tu nombre y si quieres, un mensaje especial para los novios.</p>
-        </div>
+        <div class="inv-div-gold inv-div-gold--sm"></div>
 
-        <!-- Paso 3 -->
-        <div class="paso-card fade-in-up" style="transition-delay: 0.3s;">
-          <div class="paso-numero" aria-hidden="true">3</div>
-          <span class="paso-emoji" aria-hidden="true">💕</span>
-          <h3 class="paso-titulo">¡Listo!</h3>
-          <p class="paso-desc">Tu foto se guarda de forma privada y los novios la recibirán con todo el cariño.</p>
-        </div>
-      </div>
-    </div>
-  </section><!-- /instrucciones -->
-
-
-
-
-
-  <!-- ============================================================
-       5. SECCIÓN FORMULARIO DE SUBIDA
-       ============================================================ -->
-  <section class="seccion-subida" id="seccion-subida" aria-labelledby="titulo-formulario">
-    <div class="container container--xs">
-      <div class="seccion-header fade-in-up">
-        <p class="subtitulo-dorado">Es tu momento</p>
-        <h2 id="titulo-formulario">Sube tu foto</h2>
-      </div>
-
-      <div class="form-wrapper fade-in-up" style="transition-delay: 0.15s;">
-
-        <form id="upload-form" novalidate aria-label="Formulario para subir foto de la boda">
-
-          <!-- Campo: Nombre del invitado -->
-          <div class="campo-grupo">
-            <label class="campo-label" for="campo-nombre">
-              Tu nombre <span aria-hidden="true">✦</span>
-            </label>
-            <input
-              type="text"
-              id="campo-nombre"
-              class="campo-input"
-              placeholder="¿Cómo te llamas?"
-              maxlength="80"
-              autocomplete="name"
-              required
-              aria-required="true"
-            />
-          </div>
-
-          <!-- Campo: Número de mesa (opcional) -->
-          <div class="campo-grupo">
-            <label class="campo-label" for="campo-mesa">
-              Mesa <span class="opcional">(opcional)</span>
-            </label>
-            <input
-              type="text"
-              id="campo-mesa"
-              class="campo-input"
-              placeholder="Ej: Mesa 5"
-              maxlength="30"
-            />
-          </div>
-
-
-
-          <!-- Campo: Mensaje para los novios (opcional) -->
-          <div class="campo-grupo">
-            <label class="campo-label" for="campo-mensaje">
-              Mensaje para los novios <span class="opcional">(opcional)</span>
-            </label>
-            <textarea
-              id="campo-mensaje"
-              class="campo-textarea"
-              placeholder="Cuéntanos algo bonito, un deseo o una memoria de este día..."
-              maxlength="500"
-              rows="3"
-            ></textarea>
-          </div>
-
-          <!-- Campo: Selector de foto -->
-          <div class="campo-grupo">
-            <label class="campo-label" for="campo-foto">
-              Tu foto <span aria-hidden="true">✦</span>
-            </label>
-            <div class="file-upload-zone" id="upload-zone" role="button" tabindex="0" aria-label="Seleccionar foto desde tu dispositivo">
-              <input
-                type="file"
-                id="campo-foto"
-                accept="image/jpeg,image/jpg,image/png,image/webp,image/heic"
-                aria-label="Seleccionar imagen"
-                required
-                aria-required="true"
-              />
-              <span class="file-upload-icono" aria-hidden="true">📷</span>
-              <p class="file-upload-texto">Toca para seleccionar una foto</p>
-              <p class="file-upload-hint">JPG, PNG, WEBP o HEIC · Máximo 5 MB</p>
-            </div>
-          </div>
-
-          <!-- Vista previa -->
-          <div id="preview-wrapper" aria-live="polite">
-            <img
-              id="foto-preview"
-              src=""
-              alt="Vista previa de la foto seleccionada"
-            />
-            <p class="preview-label">Vista previa de tu foto ✨</p>
-          </div>
-
-          <!-- Barra de progreso -->
-          <div id="progress-wrapper" aria-live="polite" aria-label="Progreso de subida">
-            <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-              <div id="progress-bar"></div>
-            </div>
-            <p id="progress-text">Subiendo...</p>
-          </div>
-
-          <!-- Mensaje de éxito -->
-          <div
-            id="mensaje-exito"
-            role="alert"
-            aria-live="assertive"
-          >
-            <span class="exito-emoji" aria-hidden="true">💕</span>
-            <p class="exito-titulo">¡Gracias por compartir este momento!</p>
-            <p class="exito-texto">
-              Tu foto fue recibida con mucho cariño.
-              Dani y Mario la guardarán como un recuerdo especial. 🎊
+        <!-- EDITABLE: Lugar y hora -->
+        <div class="inv-lugares fade-in-up">
+          <div class="inv-lugar-item">
+            <span class="inv-lugar-icono" aria-hidden="true">⛪</span>
+            <p class="inv-texto-lugar">
+              Templo de Santa Rosa de Viterbo,<br>Querétaro Qro.
             </p>
           </div>
+          <div class="inv-lugar-item">
+            <span class="inv-lugar-icono" aria-hidden="true">🕔</span>
+            <p class="inv-texto-lugar">17:00 pm</p>
+          </div>
+          <!-- EDITABLE: Salón de recepción -->
+          <div class="inv-lugar-item">
+            <span class="inv-lugar-icono" aria-hidden="true">📍</span>
+            <p class="inv-texto-lugar">
+              Al término de la ceremonia, nos dará gusto contar con su presencia en el salón<br>
+              <strong>Los Framboyanes</strong><br>
+              Camino a Taponas, Puerta de San Rafael, Qro.
+            </p>
+          </div>
+        </div>
 
-          <!-- Mensaje de error -->
-          <div
-            id="mensaje-error"
-            role="alert"
-            aria-live="assertive"
-          ></div>
+        <p class="inv-pie-fecha" aria-hidden="true">12.12.26</p>
 
-          <!-- Botón de envío -->
-          <button
-            type="submit"
-            id="btn-enviar"
-            class="btn-enviar"
-            aria-label="Enviar foto"
-          >
-            Enviar foto 💌
-          </button>
-
-        </form>
-      </div><!-- /form-wrapper -->
-
-      <!-- Nota de privacidad -->
-      <p style="text-align:center; font-size:0.78rem; color: var(--color-texto-suave); margin-top: 1.25rem; opacity: 0.75;">
-        🔒 Tus fotos se guardan de forma privada. Solo los novios podrán verlas.
-      </p>
-
-    </div>
-  </section><!-- /formulario -->
+      </div><!-- /inv-tarjeta-inner -->
+    </section>
 
 
-  <!-- ============================================================
-       6. SECCIÓN FINAL — Agradecimiento
-       ============================================================ -->
-  <footer class="seccion-final" id="agradecimiento" aria-labelledby="titulo-final">
-    <div class="container container--sm final-contenido">
-
-      <div class="corazones-deco" aria-hidden="true">
-        <span>♥</span>
-        <span>💕</span>
-        <span>♥</span>
+    <!-- ══════════════════════════════════════════════
+         4. GALERÍA DESLIZANTE — Banner de fotos
+         Las fotos se deslizan automáticamente (CSS)
+         ══════════════════════════════════════════════ -->
+    <section
+      class="galeria-novios"
+      id="galeria"
+      aria-label="Galería de fotos de Daniela y Mario"
+    >
+      <div class="galeria-header">
+        <p class="subtitulo-dorado">Nuestra historia</p>
       </div>
 
-      <!-- EDITABLE: Frase final -->
-      <span class="final-script" aria-hidden="true">Gracias</span>
-
-      <h2 id="titulo-final" class="final-titulo">por ayudarnos a guardar estos recuerdos</h2>
-
-      <div class="linea-ornamental" aria-hidden="true">
-        <span class="linea-ornamental-centro">✦ ♥ ✦</span>
+      <div class="galeria-track-wrapper" aria-hidden="true">
+        <div class="galeria-track" id="galeria-track">
+          <!-- SET 1 de 8 fotos -->
+          <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"         alt="La propuesta" loading="eager" /></div>
+          <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"         alt="Beso tierno" loading="eager" /></div>
+          <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"      alt="Mirada y sonrisa" loading="eager" /></div>
+          <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"           alt="Beso en la mano" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"     alt="Flores y anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"       alt="Mirada con anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/beso.jpeg"                alt="Beso romántico" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
+          <!-- SET 2 duplicado para loop sin salto -->
+          <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"         alt="La propuesta" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"         alt="Beso tierno" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"      alt="Mirada y sonrisa" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"           alt="Beso en la mano" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"     alt="Flores y anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"       alt="Mirada con anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/beso.jpeg"                alt="Beso romántico" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
+        </div>
       </div>
+    </section>
 
-      <!-- EDITABLE: Subtexto final -->
-      <p class="final-subtexto">
-        Cada foto que comparten es un pedacito de este día que llevaremos en el
-        corazón para siempre. Gracias por celebrar con nosotros.
-      </p>
 
-      <div style="margin-top: 2.5rem; color: rgba(255,255,255,0.45); font-size: 0.78rem;">
-        <!-- EDITABLE: Nombres y año -->
-        Dani &amp; Mario · 2026 &nbsp;|&nbsp;
-        Hecho con ♥ para este día tan especial
+    <!-- ══════════════════════════════════════════════
+         5. CUENTA REGRESIVA al 12/12/2026
+         ══════════════════════════════════════════════ -->
+    <section class="inv-countdown" aria-label="Cuenta regresiva para la boda">
+      <div class="container container--sm text-center">
+        <p class="subtitulo-dorado" style="color:var(--color-dorado-claro);">
+          Contando los días
+        </p>
+        <h2 class="inv-countdown-titulo">12 · 12 · 2026</h2>
+        <div class="countdown-grid" id="countdown-grid" aria-live="polite">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-dias">--</span>
+            <span class="countdown-label">Días</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-horas">--</span>
+            <span class="countdown-label">Horas</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-min">--</span>
+            <span class="countdown-label">Minutos</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-seg">--</span>
+            <span class="countdown-label">Segundos</span>
+          </div>
+        </div>
       </div>
-
-    </div>
-  </footer><!-- /final -->
+    </section>
 
 
-  <!-- ============================================================
-       Script principal
-       ============================================================ -->
+    <!-- ══════════════════════════════════════════════
+         6. TARJETA RSVP
+         EDITABLE: textos de confirmación y regalo
+         ══════════════════════════════════════════════ -->
+    <section class="inv-rsvp" aria-labelledby="rsvp-titulo">
+      <div class="container container--sm">
+        <div class="inv-rsvp-card fade-in-up">
+          <div class="inv-rsvp-flores" aria-hidden="true">🌹</div>
+
+          <h2 class="script inv-rsvp-nombres" id="rsvp-titulo">
+            Daniela &amp; Mario
+          </h2>
+
+          <h3 class="inv-rsvp-grito">¡NOS CASAMOS!</h3>
+          <p class="inv-rsvp-sub">
+            Nos encantaría compartir este día tan especial contigo
+          </p>
+
+          <div class="inv-rsvp-pase">
+            <p><strong>PASE PARA:</strong></p>
+            <p>Confirma tu asistencia antes del</p>
+            <!-- EDITABLE: Fecha límite de confirmación -->
+            <p class="inv-rsvp-fecha-limite">12 DE OCTUBRE DE 2026</p>
+          </div>
+
+          <div class="inv-linea-fina" aria-hidden="true"></div>
+
+          <!-- EDITABLE: Nota sobre el regalo -->
+          <p class="inv-rsvp-regalo">
+            Tu presencia es nuestro mejor regalo; si deseas hacernos un obsequio,
+            agradeceremos mucho tu apoyo en efectivo para comenzar esta nueva etapa juntos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         7. FOOTER
+         ══════════════════════════════════════════════ -->
+    <footer class="inv-footer" aria-label="Pie de página">
+      <span class="script inv-footer-nombres">Daniela &amp; Mario</span>
+      <div class="inv-footer-linea" aria-hidden="true"></div>
+      <p class="inv-footer-fecha">12 · 12 · 2026</p>
+      <p class="inv-footer-copy">Con amor, para siempre ♥</p>
+    </footer>
+
+  </div><!-- /inv-main -->
+
   <script type="module" src="app.js"></script>
-
 </body>
 </html>

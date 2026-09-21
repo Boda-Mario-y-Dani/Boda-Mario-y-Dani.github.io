@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#7B1A1A" />
+  <title>Sube tus fotos · Daniela &amp; Mario 12.12.2026</title>
+  <meta name="description" content="Sube tus fotos de la boda de Daniela y Mario. Página privada para invitados." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="fotos-body">
+
+  <!-- ============================================================
+       ENCABEZADO COMPACTO
+       ============================================================ -->
+  <header class="fotos-header" role="banner">
+    <span class="script fotos-header-nombres" aria-label="Daniela y Mario">Daniela &amp; Mario</span>
+    <p class="fotos-header-fecha">12 · 12 · 2026</p>
+  </header>
+
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+       ============================================================ -->
+  <main class="fotos-main container container--xs">
+
+    <div class="seccion-header fade-in-up" style="margin-bottom:var(--espacio-md);">
+      <p class="subtitulo-dorado">Es tu momento</p>
+      <h1 id="titulo-fotos">Comparte tus fotos 📸</h1>
+      <p class="fotos-descripcion">
+        Sube una o varias fotos de la boda. Todas las imágenes se guardarán de forma
+        privada y los novios las recibirán con todo el cariño. ♥
+      </p>
+    </div>
+
+    <div class="form-wrapper fade-in-up" style="transition-delay:0.1s;">
+      <form id="fotos-form" novalidate aria-label="Formulario para subir fotos de la boda">
+
+        <!-- ── Zona de subida múltiple ── -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="campo-fotos">
+            Tus fotos <span aria-hidden="true">✦</span>
+          </label>
+
+          <!-- Zona drag & drop -->
+          <div
+            class="fotos-upload-zone"
+            id="upload-zone"
+            role="button"
+            tabindex="0"
+            aria-label="Toca para seleccionar fotos o arrastra aquí"
+          >
+            <input
+              type="file"
+              id="campo-fotos"
+              accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,image/heif"
+              multiple
+              aria-label="Seleccionar imágenes"
+              style="display:none;"
+            />
+            <span class="fotos-upload-icono" aria-hidden="true">📷</span>
+            <p class="fotos-upload-texto">Toca para seleccionar fotos</p>
+            <p class="fotos-upload-hint">
+              JPG · PNG · WEBP · HEIC &nbsp;|&nbsp; Máximo 10 MB por foto<br>
+              <strong>Puedes seleccionar varias a la vez</strong>
+            </p>
+          </div>
+
+          <!-- Contador de fotos seleccionadas -->
+          <p class="fotos-contador" id="fotos-contador" aria-live="polite"></p>
+        </div>
+
+        <!-- Grid de previews -->
+        <div class="preview-grid" id="preview-grid" style="display:none;" aria-label="Previews de fotos seleccionadas"></div>
+
+        <!-- Botón para agregar más fotos (aparece al seleccionar) -->
+        <button
+          type="button"
+          id="btn-agregar"
+          class="btn-agregar-mas"
+          style="display:none;"
+          aria-label="Agregar más fotos"
+        >
+          + Agregar más fotos
+        </button>
+
+        <div class="inv-linea-fina" style="margin-block:var(--espacio-md);"></div>
+
+        <!-- ── Tu nombre ── -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="campo-nombre">
+            Tu nombre <span aria-hidden="true">✦</span>
+          </label>
+          <input
+            type="text"
+            id="campo-nombre"
+            class="campo-input"
+            placeholder="¿Cómo te llamas?"
+            maxlength="80"
+            autocomplete="name"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <!-- ── Mesa (opcional) ── -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="campo-mesa">
+            Mesa <span class="opcional">(opcional)</span>
+          </label>
+          <input
+            type="text"
+            id="campo-mesa"
+            class="campo-input"
+            placeholder="Ej: Mesa 5"
+            maxlength="30"
+          />
+        </div>
+
+        <!-- ── Mensaje para los novios (opcional) ── -->
+        <div class="campo-grupo">
+          <label class="campo-label" for="campo-mensaje">
+            Mensaje para los novios <span class="opcional">(opcional)</span>
+          </label>
+          <textarea
+            id="campo-mensaje"
+            class="campo-textarea"
+            placeholder="Cuéntanos algo bonito, un deseo o una memoria de este día…"
+            maxlength="500"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <!-- Barra de progreso -->
+        <div id="progress-wrapper" style="display:none;" aria-live="polite" aria-label="Progreso de subida">
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div id="progress-bar"></div>
+          </div>
+          <p id="progress-text" style="text-align:center;font-size:0.85rem;margin-top:0.5rem;color:var(--color-texto-suave);">
+            Subiendo…
+          </p>
+        </div>
+
+        <!-- Mensaje de éxito -->
+        <div
+          id="mensaje-exito"
+          class="fotos-mensaje-exito"
+          role="alert"
+          aria-live="assertive"
+          style="display:none;"
+        >
+          <span class="exito-emoji" aria-hidden="true">💕</span>
+          <p class="exito-titulo">¡Gracias por compartir este momento!</p>
+          <p class="exito-texto">
+            Tus fotos fueron recibidas con mucho cariño.<br>
+            Daniela y Mario las guardarán como un recuerdo especial. 🎊
+          </p>
+          <button type="button" class="btn-enviar" style="margin-top:1rem;" onclick="reiniciarFormulario()">
+            Subir más fotos
+          </button>
+        </div>
+
+        <!-- Mensaje de error -->
+        <div
+          id="mensaje-error"
+          class="fotos-mensaje-error"
+          role="alert"
+          aria-live="assertive"
+          style="display:none;"
+        ></div>
+
+        <!-- Botón de envío -->
+        <button
+          type="submit"
+          id="btn-enviar"
+          class="btn-enviar"
+          aria-label="Enviar fotos a los novios"
+        >
+          Enviar fotos 💌
+        </button>
+
+      </form><!-- /fotos-form -->
+    </div><!-- /form-wrapper -->
+
+    <!-- Nota de privacidad -->
+    <p class="fotos-privacidad">
+      🔒 Tus fotos se guardan de forma privada. Solo los novios podrán verlas.
+    </p>
+
+  </main><!-- /fotos-main -->
+
+
+  <!-- ============================================================
+       PIE DE PÁGINA
+       ============================================================ -->
+  <footer class="fotos-footer" aria-label="Pie de página">
+    <span class="script fotos-footer-nombres">Daniela &amp; Mario</span>
+    <p class="fotos-footer-fecha">12 · 12 · 2026</p>
+  </footer>
+
+  <script type="module" src="fotos.js"></script>
+</body>
+</html>

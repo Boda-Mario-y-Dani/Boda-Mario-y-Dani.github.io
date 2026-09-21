@@ -1448,7 +1448,7 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(0.2rem, 1.5vw, 1rem);
+  gap: clamp(0.1rem, 0.8vw, 0.6rem);
   text-align: center;
   position: relative;
 }
@@ -1456,11 +1456,11 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 .inv-num-grande {
   display: block;
   font-family: var(--font-title);
-  font-size: clamp(6.5rem, 26vw, 15rem);
+  font-size: clamp(9rem, 34vw, 17rem);
   font-weight: 500;
   color: var(--color-vino);
-  line-height: 0.9;
-  letter-spacing: -0.01em;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
   user-select: none;
 }
 
@@ -1497,8 +1497,8 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   align-items: center;
   justify-content: center;
   background: #FDFAF5;
-  padding-block: clamp(0.2rem, 0.8vw, 0.6rem);
-  padding-inline: clamp(1.2rem, 4vw, 3rem);
+  padding-block: clamp(0.1rem, 0.4vw, 0.35rem);
+  padding-inline: clamp(0.8rem, 3vw, 2rem);
   pointer-events: none;
 }
 
@@ -1511,7 +1511,7 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 /* Nombre en el centro del split */
 .inv-nombres-en-split {
   font-family: var(--font-script);
-  font-size: clamp(2.2rem, 7.5vw, 4.8rem);
+  font-size: clamp(1.5rem, 5.2vw, 3.2rem);
   color: var(--color-vino);
   white-space: nowrap;
   line-height: 1;

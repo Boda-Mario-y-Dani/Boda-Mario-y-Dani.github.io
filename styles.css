@@ -1460,71 +1460,74 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 
 /* ══════════════════════════════════════════════════
    SPLIT TEXT EFFECT — el 12 del medio partido en dos
-   mitades horizontales con los nombres en el hueco
+   mitades horizontales superpuestas con clip-path
    ══════════════════════════════════════════════════ */
 .inv-split-wrap {
-  /* font-size = mismo que el número, para que 0.44em = mitad de la altura visual */
-  font-size: clamp(7rem, 30vw, 18rem);
-  width: 100%;
-  text-align: center;
-}
-
-/* Mitad superior — overflow:hidden muestra solo la mitad de arriba */
-.inv-split-top {
-  height: 0.44em;   /* = line-height(0.88) / 2 → exacta mitad visual */
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
-}
-
-/* Mitad inferior — flex align-items:flex-end empuja el número hacia abajo,
-   mostrando solo la mitad inferior con overflow:hidden */
-.inv-split-bottom {
-  height: 0.44em;
-  overflow: hidden;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-/* Dentro del bottom, el número debe ser flex-shrink:0 para mantener su tamaño natural */
-.inv-split-bottom .inv-num-grande {
-  flex-shrink: 0;
-  width: 100%;
-  text-align: center;
-}
-
-/* Hueco central entre las dos mitades — aquí van los nombres */
-.inv-split-gap {
-  padding-block: clamp(0.4rem, 1.5vw, 0.85rem);
-  text-align: center;
   position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  margin-block: clamp(1rem, 3.5vw, 2.5rem);
+}
+
+/* Todas las capas (top, bottom y middle) se superponen en la misma celda de grid */
+.inv-split-wrap > * {
+  grid-area: 1 / 1;
+}
+
+/* Las dos piezas ocupan exactamente el mismo espacio físico */
+.inv-split-piece {
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Mitad superior: recorte perfecto del 0% al 50% y desplazamiento hacia arriba */
+.inv-split-top {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  transform: translateY(calc(-1 * clamp(0.9rem, 3vw, 2.2rem)));
+}
+
+/* Mitad inferior: recorte perfecto del 50% al 100% y desplazamiento hacia abajo */
+.inv-split-bottom {
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+  transform: translateY(clamp(0.9rem, 3vw, 2.2rem));
+}
+
+/* Capa central: nombres flotando exactamente en medio */
+.inv-split-middle {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: clamp(0.6rem, 2vw, 1.2rem);
+  width: 100%;
+  max-width: 520px;
+  z-index: 2;
+  padding-inline: 1rem;
 }
 
-/* Líneas decorativas a los lados del texto en el hueco */
-.inv-split-gap::before,
-.inv-split-gap::after {
+/* Líneas decorativas finas a los lados del texto */
+.inv-split-middle::before,
+.inv-split-middle::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: rgba(107, 26, 42, 0.2);
-  max-width: 60px;
+  background: rgba(107, 26, 42, 0.28);
+  max-width: 70px;
 }
 
-/* Nombre en el hueco del split */
+/* Nombre en el centro del split */
 .inv-nombres-en-split {
   font-family: var(--font-script);
-  font-size: clamp(1.6rem, 6vw, 3.5rem);
+  font-size: clamp(1.6rem, 5.5vw, 3.4rem);
   color: var(--color-vino);
   white-space: nowrap;
-  flex-shrink: 0;
-  line-height: 1;
+  line-height: 1.1;
+  padding-inline: 0.4rem;
+  background: #FDFAF5; /* Enmarca el texto de forma limpia */
 }
 
 

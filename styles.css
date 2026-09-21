@@ -348,7 +348,7 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   display: flex;
   gap: 16px;
   width: max-content;         /* Se expande para contener todas las fotos */
-  animation: scrollGaleria 36s linear infinite;
+  animation: scrollGaleria 120s linear infinite;
   will-change: transform;
 }
 
@@ -1304,11 +1304,25 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
     inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
+/* Monograma DM: la D aparece más arriba que la M */
 .sobre-monograma {
   font-family: var(--font-script);
   color: #5A0F1A;
   font-size: 2.2rem;
   line-height: 1;
+  display: inline-flex;
+  align-items: flex-end;     /* Baseline compartida */
+  gap: 0.02em;
+}
+
+.sobre-mono-d {
+  transform: translateY(-0.3em); /* D más arriba */
+  font-size: 1.1em;              /* D ligeramente más grande */
+  display: inline-block;
+}
+
+.sobre-mono-m {
+  display: inline-block;
 }
 
 .sobre-hint {
@@ -1385,8 +1399,22 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   font-size: clamp(6rem, 25vw, 14rem);
   line-height: 1;
   filter: drop-shadow(0 6px 28px rgba(0,0,0,0.5));
-  display: block;
+  display: flex;
+  align-items: flex-end;     /* D y M comparten línea base */
+  justify-content: center;
+  gap: 0.02em;
   margin-bottom: 1.5rem;
+}
+
+/* Monograma portada: D más arriba y grande, M en la base */
+.portada-mono-d {
+  display: inline-block;
+  transform: translateY(-0.22em); /* D se eleva */
+  font-size: 1.12em;
+}
+
+.portada-mono-m {
+  display: inline-block;
 }
 
 .inv-portada-linea {
@@ -1423,35 +1451,80 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 .inv-num-grande {
   display: block;
   font-family: var(--font-title);
-  font-size: clamp(6.5rem, 28vw, 16rem);
+  font-size: clamp(7rem, 30vw, 18rem);   /* Números más grandes que antes */
   font-weight: 700;
   color: var(--color-vino);
   line-height: 0.88;
   letter-spacing: -0.02em;
 }
 
-/* El 12 del medio — con opacidad alta para que el texto quede visible encima */
-.inv-num-opaco {
-  position: relative;
+/* ══════════════════════════════════════════════════
+   SPLIT TEXT EFFECT — el 12 del medio partido en dos
+   mitades horizontales con los nombres en el hueco
+   ══════════════════════════════════════════════════ */
+.inv-split-wrap {
+  /* font-size = mismo que el número, para que 0.44em = mitad de la altura visual */
+  font-size: clamp(7rem, 30vw, 18rem);
+  width: 100%;
+  text-align: center;
 }
 
-/* Fila del 12 del medio con el nombre superpuesto */
-.inv-fecha-overlay-row {
+/* Mitad superior — overflow:hidden muestra solo la mitad de arriba */
+.inv-split-top {
+  height: 0.44em;   /* = line-height(0.88) / 2 → exacta mitad visual */
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+
+/* Mitad inferior — flex align-items:flex-end empuja el número hacia abajo,
+   mostrando solo la mitad inferior con overflow:hidden */
+.inv-split-bottom {
+  height: 0.44em;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Dentro del bottom, el número debe ser flex-shrink:0 para mantener su tamaño natural */
+.inv-split-bottom .inv-num-grande {
+  flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Hueco central entre las dos mitades — aquí van los nombres */
+.inv-split-gap {
+  padding-block: clamp(0.4rem, 1.5vw, 0.85rem);
+  text-align: center;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
-.inv-nombres-fecha-overlay {
-  position: absolute;
+/* Líneas decorativas a los lados del texto en el hueco */
+.inv-split-gap::before,
+.inv-split-gap::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(107, 26, 42, 0.2);
+  max-width: 60px;
+}
+
+/* Nombre en el hueco del split */
+.inv-nombres-en-split {
   font-family: var(--font-script);
-  font-size: clamp(1.6rem, 6.5vw, 3.5rem);
+  font-size: clamp(1.6rem, 6vw, 3.5rem);
   color: var(--color-vino);
   white-space: nowrap;
-  z-index: 2;
-  mix-blend-mode: multiply;
-  pointer-events: none;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
 
@@ -1631,6 +1704,28 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
   line-height: 1.7;
 }
 
+/* Enlace de Google Maps en cada ubicación */
+.inv-lugar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-cereza);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 34, 82, 0.3);
+  padding-bottom: 1px;
+  transition: var(--transicion);
+}
+
+.inv-lugar-link:hover {
+  color: var(--color-vino);
+  border-bottom-color: var(--color-vino);
+}
+
 .inv-pie-fecha {
   font-family: var(--font-body);
   font-size: 0.78rem;
@@ -1659,36 +1754,56 @@ p  { font-size: clamp(0.92rem, 2.5vw, 1.05rem); }
 .countdown-grid {
   display: flex;
   justify-content: center;
-  gap: clamp(1.5rem, 5vw, 3.5rem);
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: nowrap;           /* Forzar una sola fila en celular */
+  gap: 0;                      /* Sin gap, usamos padding interno */
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
 }
 
 .countdown-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  min-width: 70px;
+  gap: 0.25rem;
+  padding: 0.5rem clamp(0.25rem, 1.5vw, 0.75rem);
+  position: relative;
+}
+
+/* Dos puntos separadores entre cada item */
+.countdown-item:not(:last-child)::after {
+  content: ':';
+  position: absolute;
+  right: -0.1em;
+  top: 0.3rem;
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  line-height: 1;
 }
 
 .countdown-num {
   font-family: var(--font-title);
-  font-size: clamp(3rem, 12vw, 5.5rem);
+  font-size: clamp(1.8rem, 7vw, 3.5rem);  /* Reducido: de 3-5.5rem → 1.8-3.5rem */
   font-weight: 700;
   color: var(--color-blanco);
   line-height: 1;
-  min-width: 2ch;
   text-align: center;
   display: block;
+  width: 100%;
 }
 
 .countdown-label {
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: clamp(0.55rem, 1.8vw, 0.65rem);  /* Más pequeño en móvil */
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
 }
 
 

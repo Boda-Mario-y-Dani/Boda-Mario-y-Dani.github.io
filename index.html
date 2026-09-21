@@ -37,7 +37,9 @@
       <div class="sobre-caja" aria-hidden="true">
         <span class="sobre-fecha-text">12.12.26</span>
         <div class="sobre-sello">
-          <span class="sobre-monograma">MD</span>
+          <span class="sobre-monograma">
+            <span class="sobre-mono-d">D</span><span class="sobre-mono-m">M</span>
+          </span>
         </div>
         <!-- Líneas decorativas del sobre -->
         <div class="sobre-linea sobre-linea--tl"></div>
@@ -74,7 +76,9 @@
          ══════════════════════════════════════════════ -->
     <section class="inv-portada" aria-label="Portada">
       <div class="inv-portada-inner">
-        <p class="inv-monograma-grande" aria-label="Monograma MD">MD</p>
+        <p class="inv-monograma-grande" aria-label="Monograma DM">
+          <span class="portada-mono-d">D</span><span class="portada-mono-m">M</span>
+        </p>
         <div class="inv-portada-linea" aria-hidden="true"></div>
         <p class="inv-portada-fecha">12 · 12 · 2026</p>
       </div>
@@ -88,10 +92,20 @@
     <section class="inv-fecha-seccion" aria-label="Fecha de la boda: 12 de diciembre de 2026">
       <div class="inv-fecha-grande-wrap">
         <span class="inv-num-grande fade-in-up">12</span>
-        <div class="inv-fecha-overlay-row fade-in-up" style="transition-delay:0.15s;">
-          <span class="inv-num-grande inv-num-opaco">12</span>
-          <!-- Nombre superpuesto sobre el 12 del medio -->
-          <p class="inv-nombres-fecha-overlay">Daniela &amp; Mario</p>
+        <!-- SPLIT TEXT EFFECT: el 12 partido a la mitad con Daniela & Mario en el hueco -->
+        <div class="inv-split-wrap fade-in-up" style="transition-delay:0.15s;" aria-label="12">
+          <!-- Mitad superior del 12 -->
+          <div class="inv-split-top" aria-hidden="true">
+            <span class="inv-num-grande">12</span>
+          </div>
+          <!-- Hueco central con los nombres -->
+          <div class="inv-split-gap">
+            <p class="inv-nombres-en-split">Daniela &amp; Mario</p>
+          </div>
+          <!-- Mitad inferior del 12 -->
+          <div class="inv-split-bottom" aria-hidden="true">
+            <span class="inv-num-grande">12</span>
+          </div>
         </div>
         <span class="inv-num-grande fade-in-up" style="transition-delay:0.3s;">26</span>
       </div>
@@ -173,9 +187,16 @@
         <div class="inv-lugares fade-in-up">
           <div class="inv-lugar-item">
             <span class="inv-lugar-icono" aria-hidden="true">⛪</span>
-            <p class="inv-texto-lugar">
-              Templo de Santa Rosa de Viterbo,<br>Querétaro Qro.
-            </p>
+            <div>
+              <p class="inv-texto-lugar">Templo de Santa Rosa de Viterbo, Querétaro Qro.</p>
+              <a
+                href="https://maps.app.goo.gl/v3ybCSJ1uPQZa1PJA"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inv-lugar-link"
+                aria-label="Ver ubicación de la iglesia en Google Maps"
+              >📍 Ver en Google Maps</a>
+            </div>
           </div>
           <div class="inv-lugar-item">
             <span class="inv-lugar-icono" aria-hidden="true">🕔</span>
@@ -183,12 +204,21 @@
           </div>
           <!-- EDITABLE: Salón de recepción -->
           <div class="inv-lugar-item">
-            <span class="inv-lugar-icono" aria-hidden="true">📍</span>
-            <p class="inv-texto-lugar">
-              Al término de la ceremonia, nos dará gusto contar con su presencia en el salón<br>
-              <strong>Los Framboyanes</strong><br>
-              Camino a Taponas, Puerta de San Rafael, Qro.
-            </p>
+            <span class="inv-lugar-icono" aria-hidden="true">🥂</span>
+            <div>
+              <p class="inv-texto-lugar">
+                Al término de la ceremonia, nos dará gusto contar con su presencia en el salón<br>
+                <strong>Los Framboyanes</strong><br>
+                Camino a Taponas, Puerta de San Rafael, Qro.
+              </p>
+              <a
+                href="https://maps.app.goo.gl/KVoryYrw8opsmTnFA"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inv-lugar-link"
+                aria-label="Ver ubicación del salón en Google Maps"
+              >📍 Ver en Google Maps</a>
+            </div>
           </div>
         </div>
 
@@ -213,24 +243,72 @@
 
       <div class="galeria-track-wrapper" aria-hidden="true">
         <div class="galeria-track" id="galeria-track">
-          <!-- SET 1 de 8 fotos -->
+          <!-- SET 1 de 32 fotos (Noviazgo, Pedida y Boda Civil) -->
+          <div class="galeria-foto-item"><img src="assets/foto_1.jpeg"              alt="Nuestra historia" loading="eager" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_2.jpeg"              alt="Nuestra historia" loading="eager" /></div>
           <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"         alt="La propuesta" loading="eager" /></div>
-          <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"         alt="Beso tierno" loading="eager" /></div>
-          <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"      alt="Mirada y sonrisa" loading="eager" /></div>
-          <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"           alt="Beso en la mano" loading="lazy" /></div>
-          <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"     alt="Flores y anillo" loading="lazy" /></div>
-          <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"       alt="Mirada con anillo" loading="lazy" /></div>
-          <div class="galeria-foto-item"><img src="assets/beso.jpeg"                alt="Beso romántico" loading="lazy" /></div>
-          <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
-          <!-- SET 2 duplicado para loop sin salto -->
-          <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"         alt="La propuesta" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_3.jpeg"              alt="Nuestra historia" loading="eager" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_4.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"         alt="Beso tierno" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_5.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_6.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"      alt="Mirada y sonrisa" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_7.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_8.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"           alt="Beso en la mano" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_9.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_10.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"     alt="Flores y anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_11.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_12.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"       alt="Mirada con anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_13.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_14.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/beso.jpeg"                alt="Beso romántico" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_15.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_16.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
           <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_17.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_18.jpeg"             alt="Boda Civil - Registro Civil" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_22.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_19.jpeg"             alt="Boda Civil - Ramo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_23.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_20.jpeg"             alt="Boda Civil - Celebración" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_24.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_21.jpeg"             alt="Boda Civil - Brindis" loading="lazy" /></div>
+          <!-- SET 2 duplicado para loop sin salto -->
+          <div class="galeria-foto-item"><img src="assets/foto_1.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_2.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Arrodillado.jpeg"         alt="La propuesta" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_3.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_4.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Beso_frente.jpeg"         alt="Beso tierno" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_5.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_6.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Mirada_sonrisa.jpeg"      alt="Mirada y sonrisa" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_7.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_8.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Beso_mano.jpeg"           alt="Beso en la mano" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_9.jpeg"              alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_10.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Flores_y_anillo.jpeg"     alt="Flores y anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_11.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_12.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Mirada_anillo.jpeg"       alt="Mirada con anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_13.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_14.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/beso.jpeg"                alt="Beso romántico" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_15.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_16.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/Anillo_blanco_negro.jpeg" alt="El anillo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_17.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_18.jpeg"             alt="Boda Civil - Registro Civil" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_22.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_19.jpeg"             alt="Boda Civil - Ramo" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_23.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_20.jpeg"             alt="Boda Civil - Celebración" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_24.jpeg"             alt="Nuestra historia" loading="lazy" /></div>
+          <div class="galeria-foto-item"><img src="assets/foto_21.jpeg"             alt="Boda Civil - Brindis" loading="lazy" /></div>
         </div>
       </div>
     </section>

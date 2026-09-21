@@ -1650,7 +1650,7 @@ p {
 .inv-num-grande {
   display: block;
   font-family: var(--font-title);
-  font-size: clamp(12rem, 40vw, 17rem);
+  font-size: clamp(15rem, 50vw, 21rem);
   font-weight: 500;
   color: var(--color-vino);
   line-height: 0.86;
@@ -1683,7 +1683,7 @@ p {
 /* Franja central que aloja a Daniela & Mario y enmascara el centro del 12 */
 .inv-split-middle {
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -1691,8 +1691,8 @@ p {
   align-items: center;
   justify-content: center;
   background: #FDFAF5;
-  padding-block: clamp(0.1rem, 0.4vw, 0.35rem);
-  padding-inline: clamp(0.8rem, 3vw, 2rem);
+  padding-block: 0;
+  padding-inline: clamp(0.6rem, 2.5vw, 1.6rem);
   pointer-events: none;
 }
 
@@ -1705,10 +1705,10 @@ p {
 /* Nombre en el centro del split */
 .inv-nombres-en-split {
   font-family: var(--font-script);
-  font-size: clamp(1.3rem, 4.9vw, 3.2rem);
+  font-size: clamp(1rem, 3.8vw, 2.2rem);
   color: var(--color-vino);
   white-space: nowrap;
-  line-height: 1;
+  line-height: 0.85;
   letter-spacing: 0.02em;
 }
 

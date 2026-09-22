@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // 1. ANIMACIÓN DEL SOBRE DE APERTURA
 // ============================================================
 function initSobre() {
-  const overlay  = document.getElementById('sobre-intro');
-  const invMain  = document.getElementById('inv-main');
+  const overlay = document.getElementById('sobre-intro');
+  const invMain = document.getElementById('inv-main');
   if (!overlay || !invMain) return;
 
   let yaAbierto = false;
@@ -78,30 +78,30 @@ function initSobre() {
 // 2. CUENTA REGRESIVA
 // ============================================================
 function initCountdown() {
-  const elDias  = document.getElementById('cd-dias');
+  const elDias = document.getElementById('cd-dias');
   const elHoras = document.getElementById('cd-horas');
-  const elMin   = document.getElementById('cd-min');
-  const elSeg   = document.getElementById('cd-seg');
+  const elMin = document.getElementById('cd-min');
+  const elSeg = document.getElementById('cd-seg');
 
   if (!elDias) return;
 
   function actualizar() {
     const ahora = new Date();
-    const diff  = BODA_FECHA - ahora;
+    const diff = BODA_FECHA - ahora;
 
     if (diff <= 0) {
       // ¡Es el día! o ya pasó
-      elDias.textContent  = '0';
+      elDias.textContent = '0';
       elHoras.textContent = '0';
-      elMin.textContent   = '0';
-      elSeg.textContent   = '0';
+      elMin.textContent = '0';
+      elSeg.textContent = '0';
       return;
     }
 
-    elDias.textContent  = Math.floor(diff / 86_400_000);
+    elDias.textContent = Math.floor(diff / 86_400_000);
     elHoras.textContent = Math.floor((diff % 86_400_000) / 3_600_000);
-    elMin.textContent   = Math.floor((diff % 3_600_000) / 60_000);
-    elSeg.textContent   = Math.floor((diff % 60_000) / 1_000);
+    elMin.textContent = Math.floor((diff % 3_600_000) / 60_000);
+    elSeg.textContent = Math.floor((diff % 60_000) / 1_000);
   }
 
   actualizar();
